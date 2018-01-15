@@ -1,0 +1,58 @@
+﻿@model SaphirCongesCore.Models.CongesDescription
+
+@{
+    ViewBag.Title = "Créer";
+}
+@section calendar{
+    <script src="~/Scriptss/jscolor.js"></script>
+}
+<h2>Créer</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>HolidayDescription</h4>
+
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypeConge, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TypeConge)
+                @Html.ValidationMessageFor(model => model.TypeConge)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CongesColor, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CongesColor, new { htmlAttributes = new { @class = "color" } })
+                @Html.ValidationMessageFor(model => model.CongesColor)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypePour, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.TypePour, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TypePour)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Creer" class='btn btn-default' />
+            </div>
+        </div>
+    </div>
+
+    <div>
+        @Html.ActionLink("Retour a la liste", "Index")
+    </div>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

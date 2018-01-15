@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SalesFirst.Core.Model.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Créer nouveau", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Prénom
+        </th>
+        <th>
+            Nom
+        </th>
+        <th>
+           Nom d'utilisateur
+        </th>
+        <th>
+            Date de naissance
+        </th>
+        <th>
+           E-Mail
+        </th>
+       
+        <th>
+            Statut
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>                
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>               
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>               
+        <td>
+            @Html.DisplayFor(modelItem => item.PersonalEmail)
+        </td>                
+                        
+        <td>
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td>
+            @Html.ActionLink("Editer", "Edit", new { id = item.EmployeeId })|
+            @Html.ActionLink("Détails", "Details", new { id = item.EmployeeId })|
+            @Html.ActionLink("Supprimer", "Delete", new { id = item.EmployeeId })|
+        </td>
+    </tr>
+    }
+</table>

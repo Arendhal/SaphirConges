@@ -1,0 +1,53 @@
+﻿@model SalesFirst.Core.Model.Employee
+
+@{
+    ViewBag.Title = "Supprimer";
+}
+
+<h2>Supprimer</h2>
+<h3> Etes vous certain de vouloir supprimer ces informations?</h3>
+<div>
+    <h4>Employé</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.Label("Prénom", new { @class = "control-label col-md-2" })
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.Label("Nom", new { @class = "control-label col-md-2" })
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.Label("Date de naissance", new { @class = "control-label col-md-2" })
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+        <dt>
+            @Html.Label("E-mail", new { @class = "control-label col-md-2" })
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PersonalEmail)
+        </dd>
+        
+        <dt>
+            @Html.Label("Statut", new { @class = "control-label col-md-2" })
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.JobTitle)
+        </dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default">
+            @Html.ActionLink("Retour", "Index")
+        </div>
+    }
+</div>

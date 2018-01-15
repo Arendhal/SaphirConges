@@ -1,0 +1,37 @@
+﻿@model IEnumerable<SaphirCongesCore.Models.CongesGeneral>
+@using System.Globalization;
+@{
+          ViewBag.Title = "Index";
+}
+@section calendar {
+
+    <link href="~/Content/fullcalendar.css" rel="stylesheet" />
+    <link href="~/Content/fullcalendar.print.css" rel="stylesheet" media="print" />
+    <script src="~/Scripts/fullcalendar.js"></script>
+    <script>
+
+    $(document).ready(function () {
+
+        $('#calendar').fullCalendar({
+
+
+            events: [
+
+
+				@foreach (var item in Model)
+                {
+                    String str = "{titre: '" + item.Nom + "', début: '" + string.Format("{0:dd/mm/YYYY}", item.StartDate) + "', fin: '" + string.Format("{0:dd/mm/YYYY}", item.EndDate) + "'},";
+                    //@Html.Raw(str)
+
+            }
+            ],eventColor: '#378006'
+
+        });
+
+    });
+
+    </script>
+}
+<h2>Calendrier</h2>
+<div id='calendar' class="month-cal"></div>
+

@@ -1,0 +1,82 @@
+﻿@model SalesFirst.Core.Model.Employee
+
+@{
+     ViewBag.Title = "Créer";
+}
+
+<h2>Créer</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="form-horizontal">
+    <h4> Employe </h4>
+    <hr />
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.Label("Prénom", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Nom", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+    </div>
+    @*<div class="form-group">
+        @Html.Label("Nom d'utilisateur", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        @Html.Label("Date de naissance", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.BirthDate)
+            @Html.ValidationMessageFor(model => model.BirthDate)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Date d'embauche", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.HireDate)
+            @Html.ValidationMessageFor(model => model.HireDate)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("E-mail", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PersonalEmail)
+            @Html.ValidationMessageFor(model => model.PersonalEmail)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Statut", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.JobTitle, ViewBag.JobTitle as SelectList, "--Choisissez le statut de l'employé--")
+            @Html.ValidationMessageFor(model => model.JobTitle)
+        </div>
+    </div>
+    
+    <div clas="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Créer" class="btn  btn-default" />
+        </div>
+    </div>
+</div>
+}
+<div>
+    @Html.ActionLink("Retour", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

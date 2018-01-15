@@ -1,0 +1,110 @@
+﻿@model SaphirCongesCore.Models.CongesGeneral
+
+@{
+    ViewBag.Title = "Créer";
+}
+
+<h2>Créer</h2>
+<link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+
+@using (Html.BeginForm())
+
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <h4>Jours fériés </h4>
+    <hr />
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nom, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nom)
+            @Html.ValidationMessageFor(model => model.Nom)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="StartDate" id="StartDate" />
+            @Html.ValidationMessageFor(model => model.StartDate)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.EndDate, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="text" name="EndDate" id="EndDate" />
+            @Html.ValidationMessageFor(model => model.EndDate)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Frequency, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Frequency, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Frequency)
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+<div>
+    @Html.ActionLink("Retour", "Index")
+</div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/jquery-ui-1.10.4.js")
+}
+@*Code pour le DateTimePicker*@
+
+<script>
+	$(document).ready(function(){
+		$(".datepicker").datepicker({dateFormat:'dd/mm/YYYY'});
+		$("#StartDate").atrr('type','text');
+		$("#EndDate").atrr('type','text');
+		//$("#NoOfDays").atrr('readonly','readonly');
+		$('#NoOfDays').css('background-color','#D4D4D4');
+
+		var select=function(dateStr){
+			var date1 = $('#StartDate').datepicker.('getDate');
+			var date2 = $('#EndDate').datepicker.('getDate');
+			var diff = 0;
+			if(date1 && date2)
+			{
+				if(d1.getTime() == d2.getTime())
+				{
+					 diff=parseFloat(0.5);
+				}
+				else
+					diff=Math.floor((d2.getTime() - d1.getTime())/86400000); //millisecondes par jour
+			}
+			diff=parseFloat(diff);
+			$('#NoOfDays').val(diff);
+		}
+
+		$("#StartDate").datepicker({
+			onSelect:select,
+			dateFormat: 'dd/mm/YYYY'
+		});
+		$("#EndDate").datepicker({
+			onSelect:select,
+			dateFormat: 'dd/mm/YYYY'
+		});
+	});
+</script>

@@ -1,0 +1,41 @@
+﻿@model SaphirCongesCore.Models.EmployeHierarchie
+@{
+    ViewBag.Title = "Supprimer";
+}
+
+<h2>Supprimer</h2>
+
+<h3> Etes vous certain de vouloir supprimer ces informations?</h3>
+<div>
+    <h4>Hiérarchie</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Service)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Service)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.isResponsable)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.isResponsable)
+        </dd>
+
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default">
+            @Html.ActionLink("Retour", "Index")
+        </div>
+    }
+</div>

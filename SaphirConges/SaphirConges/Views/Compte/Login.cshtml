@@ -1,0 +1,57 @@
+﻿@model SaphirConges.Models.LoginViewModel
+@using SaphirCongesCore.Models
+
+@{
+    ViewBag.Title = "Se connecter";
+}
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+
+    <div class="col-md-8">
+
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Compte", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Utilisez un compte local pour vous connecter</h4>
+                <hr />
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    @Html.LabelFor(m => m.employeeUsername.Username, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(m => m.employeeUsername.Username, ViewBag.Employe as SelectList ,"--Selectionnez votre nom--" , new { @class="form-control"})
+                        @Html.ValidationMessageFor(m => m.employeeUsername.Username)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.password, new { @class = "col-md-2 control-label" })
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m => m.password, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.password)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.rememberMe)
+                            @Html.LabelFor(m => m.rememberMe)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Se connecter" class="btn btn-default" />
+                    </div>
+                </div>
+                <p>
+                    @Html.ActionLink("Créer un compte", "Register") si vous n'avez pas de compte.
+                </p>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SaphirCongesCore.Models.EmployeHierarchie>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Definir la hiérarchie d'un employé", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Employé")
+        </th>
+        <th>
+            @Html.DisplayName("Service")
+        </th>
+        <th>
+            @Html.DisplayName("Est responsable")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(model => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.Service)
+        </td>
+        <td>
+            @Html.DisplayFor(model => item.isResponsable)
+        </td>
+        <td>
+            @Html.ActionLink("Editer", "Edit", new { id = item.EmployeID })|
+            @Html.ActionLink("Détails", "Details", new { id = item.EmployeID })|
+            @Html.ActionLink("Supprimer", "Delete", new { id = item.EmployeID })|
+        </td>
+    </tr>
+    }
+</table>

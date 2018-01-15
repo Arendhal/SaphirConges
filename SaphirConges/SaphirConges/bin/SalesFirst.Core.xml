@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SalesFirst.Core</name>
+    </assembly>
+    <members>
+        <member name="T:SalesFirst.Core.Service.EmailService">
+            <summary>
+            EmailService Class definition, send emails to recipients via sales-first email.
+            </summary>
+        </member>
+        <member name="F:SalesFirst.Core.Service.EmailService.recipient">
+            <summary>
+            The recipient
+            </summary>
+        </member>
+        <member name="F:SalesFirst.Core.Service.EmailService.smtpServer">
+            <summary>
+            The SMTP server
+            </summary>
+        </member>
+        <member name="M:SalesFirst.Core.Service.EmailService.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SalesFirst.Core.Service.EmailService"/> class.
+            </summary>
+        </member>
+        <member name="M:SalesFirst.Core.Service.EmailService.SendEmail(System.String,System.String,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Sends the email.
+            </summary>
+            <param name="subject">The subject of the email.</param>
+            <param name="bodyText">The body text of the email.</param>
+            <param name="toEmail">The recipient.</param>
+            <param name="ccList">List of address which need to be copied</param>
+            <returns></returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:SalesFirst.Core.Service.EmployeeService.GetAll">
+            <summary>
+            Gets all.
+            </summary>
+            <returns>An IEnumerable list of employees</returns>
+        </member>
+        <member name="M:SalesFirst.Core.Service.EmployeeService.GetEmployeeByApexureId(System.String)">
+            <summary>
+            Gets the employee by Apexure ID. e.g. john.smith@apexure.com
+            </summary>
+            <param name="apexureId">The Apexure ID.</param>
+            <returns></returns>
+        </member>
+        <member name="M:SalesFirst.Core.Service.EmployeeService.GetEmployeeByUsername(System.String)">
+            <summary>
+            Gets the employee by username e.g. john.doe
+            </summary>
+            <param name="username">The username.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

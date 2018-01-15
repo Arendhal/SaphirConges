@@ -1,0 +1,49 @@
+﻿@using SaphirCongesCore.Utils;
+@{
+    ViewBag.Title = "Calendrier mensuel";
+} 
+
+@section calendar {
+
+    <link href="~/Content/fullcalendar.css" rel="stylesheet" />
+    <link href="~/Content/fullcalendar.print.css" rel="stylesheet" media="print" />
+    <script src="~/Scripts/fullcalendar.js"></script>
+    <script>
+
+    $(document).ready(function () {
+
+        $('#calendar').fullCalendar({
+
+            events: [
+@{
+        if (ViewBag.CongesGeneral != null)
+        {
+            foreach (var item in ViewBag.CongesGeneral)
+            {
+
+                String str = "{titre: '" + item.Nom + "', début: '" + string.Format("{0:dd/MM/yyyy}", item.StartDate) + "', fin: '" + string.Format("{0:dd/MM/yyyy}", item.EndDate) + "',couleur:'" + Utils.GetCongesTypeColor(item.Type) + "'},";
+                Utils.HTMLRaw(str);
+            }
+        }
+        if(ViewBag.Conges != null){
+            foreach (var item2 in ViewBag.Conges)
+            {
+                var color2 = (item2.Statut == "en attente" || item2.Statut == null) ? "en attente" : item2.TypeConges;
+                String str = "{Titre: '" + item2.TypeConges + "', début: '" + string.Format("{0:dd/MM/yyyy}", item2.StartDate) + "', fin: '" + string.Format("{0:dd/MM/yyyy}", item2.EndDate) + "', couleur:'" + Utils.GetCongesTypeColor(color2) + "'},";
+                Utils.HTMLRaw(str);
+            }
+        }
+
+    }]
+
+        });
+
+    });
+
+    </script>
+}
+<h2>Calendrier</h2>
+<div id='calendar' class="month-cal">
+
+
+</div>

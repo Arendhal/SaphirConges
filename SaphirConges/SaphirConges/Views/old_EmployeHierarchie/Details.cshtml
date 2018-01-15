@@ -1,0 +1,40 @@
+﻿@model SaphirCongesCore.Models.EmployeHierarchie
+
+@{
+    ViewBag.Title = "Détails";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Détails</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Username)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Service)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Service)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isResponsable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isResponsable)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editer", "Edit", new { id = Model.EmployeHierarchieID })
+    @Html.ActionLink("Retour", "Index")
+</p>

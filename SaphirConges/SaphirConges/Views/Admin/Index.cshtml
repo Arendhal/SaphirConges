@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SaphirCongesCore.Models.Conges>
+@{
+    ViewBag.Title = " Panneau d'administration";
+}
+
+<h3> Demandes de congés en attentes </h3>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Demande acceptées", "Requests", "Admin")</li>
+        <li>@Html.ActionLink("Demande refusées", "RejectedRequests", "Admin")</li>
+        <li>@Html.ActionLink("Créer une demande", "Create", "Admin")</li>
+    </ul>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoOfDays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HalfDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BookedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeConges)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CongesDescription)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoOfDays)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HalfDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeConges)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CongesDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Accepter", "Accept", new { id = item.CongesID }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Refuser", "Reject", new { id = item.CongesID }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+</table>

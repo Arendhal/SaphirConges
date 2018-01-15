@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SaphirCongesCore.Models.CongesGeneral>
+@using SaphirCongesCore.Utils;
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2> Liste des jours fériés</h2>
+<hr />
+@Html.ActionLink("Ajouter", "Create")
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.Frequency)
+        </th>
+        <th></th>
+    <tr>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.EndDate)
+            </td>
+          
+            <td>
+                @Html.DisplayFor(model => item.Frequency)
+            </td>
+            <td>
+                @Html.ActionLink("Editer", "Edit", new { id = item.CongesGeneralID }) |
+                @Html.ActionLink("Détails", "Details", new { id = item.CongesGeneralID }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id = item.CongesGeneralID }) |
+            </td>
+        </tr>
+    }
+    </table>

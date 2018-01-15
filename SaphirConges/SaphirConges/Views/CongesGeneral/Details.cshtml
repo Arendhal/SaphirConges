@@ -1,0 +1,53 @@
+﻿@model SaphirCongesCore.Models.CongesGeneral
+
+@{
+    ViewBag.Title = "Détails";
+}
+<h2>Details</h2>
+
+<div>
+    <h4> Jours fériés</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NoOfDays)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.NoOfDays)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Frequency)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.Frequency)
+        </dd>
+    </dl>
+   </div>
+        <p>
+            @Html.ActionLink("Editer", "Edit", new { id = Model.CongesGeneralID })|
+            @Html.ActionLink("Retour", "Index")
+        </p>

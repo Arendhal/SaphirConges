@@ -1,0 +1,60 @@
+﻿@model SaphirCongesCore.Models.CongesGeneral
+
+@{
+    ViewBag.Title = "Supprimer";
+}
+
+<h2>Supprimer</h2>
+<h3> Êtes vous certains de vouloir supprimer ceci ?</h3>
+<div>
+    <h4> Jours fériés </h4>
+    <hr />
+    <dl>
+    <dt>
+        @Html.DisplayNameFor(model => model.Nom)
+    </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.Nom)
+        </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Description)
+    </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.Description)
+        </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.StartDate)
+    </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.EndDate)
+    </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.NoOfDays)
+    </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.NoOfDays)
+        </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.Frequency)
+    </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.Frequency)
+        </dd>
+   
+   </dl>
+
+    @using (Html.BeginForm())
+    { 
+         @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <input type="submit" value="Supprimer" class="btn btn-default" />|
+        @Html.ActionLink("Retour","Index")
+    </div>
+    }
+</div>

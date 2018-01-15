@@ -1,0 +1,57 @@
+﻿@model SaphirCongesCore.Models.CongesDescription
+
+@{
+    ViewBag.Title = "Editer";
+}
+@section calendar {
+    <script src="~/Script/jscolor/js"></script>
+    }
+
+    <h2>Editer</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-horizontal">
+            <h4> Description des congés</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.CongesDescriptionID)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TypeConge, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TypeConge)
+                    @Html.ValidationMessageFor(model => model.TypeConge)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CongesColor, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CongesColor, new { htmlAttributes = new { @class = "color" } })
+                    @Html.ValidationMessageFor(model => model.CongesColor)
+                </div>
+            </div>
+
+            <div class="form-group">
+                
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.TypePour, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CongesColor)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Editer" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Retour", "Index")
+    </div>
+    @section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+    }

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaphirConges", "SaphirConges\SaphirConges.csproj", "{C5C844F5-88D1-4FB7-9F2B-318414D7F999}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaphirConges.Core", "SaphirConges.Core\SaphirConges.Core.csproj", "{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5C844F5-88D1-4FB7-9F2B-318414D7F999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5C844F5-88D1-4FB7-9F2B-318414D7F999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5C844F5-88D1-4FB7-9F2B-318414D7F999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5C844F5-88D1-4FB7-9F2B-318414D7F999}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE9CAA05-2C12-4282-9BA8-A2AC27C2B7FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E5C37A4-6833-4C08-A909-B9C415230223}
+	EndGlobalSection
+EndGlobal

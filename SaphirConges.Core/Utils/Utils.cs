@@ -53,12 +53,6 @@ namespace SaphirCongesCore.Utils
             return result;
         }
 
-        public static int GetEmployeHierarchieIdentifier(Employee employe)
-        {
-            return employe.EmployeeId;
-        }
-
-
         public static DateTime SetAnneeActuelle(DateTime date)
         {
             return new DateTime(DateTime.Now.Year, date.Month, date.Day);
@@ -239,7 +233,7 @@ namespace SaphirCongesCore.Utils
             Dictionary<string, float> groups = new Dictionary<string, float>();
             foreach (var item in result)
             {
-                groups.Add(item.Group, item.Sum);
+                groups.Add(item.Group,(item.Sum));
             }
             return groups;
         }
@@ -294,6 +288,7 @@ namespace SaphirCongesCore.Utils
             public float day;
             public string type;
         }
+
     }
 }
 

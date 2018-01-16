@@ -219,32 +219,3 @@
     box-shadow: 1px 1px 3px;
 }
 
-#year-calendar .JoursFeries {
-    background-color: #DC143C;
-    color: white;
-}
-
-#year-calendar .pending {
-    background-color: #FFFF00;
-    color: white;
-}
-
-#year-calendar .Annuel {
-    background-color: #00FF00;
-    color: white;
-}
-
-#year-calendar .Personnel {
-    background-color: #87CEEB;
-    color: white;
-}
-
-#year-calendar .Mensuel {
-    background-color: #7B68EE;
-    color: white;
-}
-
-#year-calendar .Conges Maladie {
-    background-color: #FFA500;
-    color: white;
-}

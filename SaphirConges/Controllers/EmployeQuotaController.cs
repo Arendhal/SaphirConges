@@ -88,7 +88,7 @@ namespace SaphirConges.Controllers
             ViewBag.Entitlement = db.GetEmployeQuotaByEmploye(employe).PaidQuota;
             ViewBag.CongesPris = Utils.CongesPris(employe);
             ViewBag.CongesPrisThisYear = Utils.CongesPosesInYear(employe, DateTime.Now.Year);
-            ViewBag.Restant = db.GetEmployeQuotaByEmploye(employe).PaidQuota - Utils.CongesPosesInYear(employe, DateTime.Now.Year);
+            ViewBag.Restant = Math.Round(db.GetEmployeQuotaByEmploye(employe).PaidQuota - Utils.CongesPosesInYear(employe, DateTime.Now.Year));
             ViewData["PourcentRestant"] = Utils.CongesPosesInYear(employe, DateTime.Now.Year) / db.GetEmployeQuotaByEmploye(employe).PaidQuota;
             return View(db.GetEmployeQuotaByEmploye(employe));
         }
@@ -171,6 +171,12 @@ namespace SaphirConges.Controllers
         //GET: /EmployeQuota/Delete/5
         public ActionResult Delete(int? id)
         {
+            var loggedInUser = User.Identity.Name;
+            Employee employe = employeService.GetEmployeeByUsername(loggedInUser);
+            if (employe.JobTitle == "Employe")
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);//TODO Faire une vue adaptée
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

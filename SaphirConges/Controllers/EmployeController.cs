@@ -116,11 +116,18 @@ namespace SaphirConges.Controllers
             ViewBag.JobTitle = new SelectList(employeService.GetAll(), "JobTitle", "JobTitle");
             ViewBag.JobTitle = items;
 
+           var loggedInUser = User.Identity.Name;
+           Employee employe = employeService.Get(id);
+           Employee me = employeService.GetEmployeeByUsername(loggedInUser);
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employe = employeService.Get(id);
+            if(id != me.EmployeeId && me.JobTitle=="Employe" || id != me.EmployeeId && me.JobTitle == "Responsable")
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             if (employe == null)
             {
                 return HttpNotFound();
@@ -134,7 +141,8 @@ namespace SaphirConges.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "EmployeeId,FirstName,LastName,PersonalEmail,HireDate,BirthDate,JobTitle")]Employee employe)
         {
-            
+             
+
             if (ModelState.IsValid)
             {
                 employeService.Update(employe);

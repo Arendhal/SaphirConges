@@ -73,7 +73,7 @@ namespace SaphirConges.Controllers
             }
 
             ViewBag.CongesGeneral = db.CongesGeneral.ToList();
-            ViewBag.Conges = db.GetCongesNonRefuseByEmploye(employe).ToList();
+            ViewBag.Conges = db.GetCongesAccepteByEmploye(employe).ToList();
 
             return View();
         }

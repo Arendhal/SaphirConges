@@ -306,7 +306,7 @@
 		},
 		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
 			if (num%1!==0 && isNumber(num)){
-				return num.toString().split(".")[1].length;
+				return num.toString().split(",")[1].length;
 			}
 			else {
 				return 0;

@@ -8,6 +8,9 @@
     <link href="~/Content/fullcalendar.css" rel="stylesheet" />
     <link href="~/Content/fullcalendar.print.css" rel="stylesheet" media="print" />
     <script src="~/Scripts/fullcalendar.js"></script>
+    <style>
+        @Html.Raw(Utils.CongesColors())
+    </style>
     <script>
 
     $(document).ready(function () {
@@ -16,23 +19,25 @@
 
             events: [
 @{
-        if (ViewBag.CongesGeneral != null)
+    if (ViewBag.CongesGeneral != null)
+    {
+        foreach (var item in ViewBag.CongesGeneral)
         {
-            foreach (var item in ViewBag.CongesGeneral)
-            {
 
-                String str = "{titre: '" + item.Nom + "', début: '" + string.Format("{0:dd/MM/yyyy}", item.StartDate) + "', fin: '" + string.Format("{0:dd/MM/yyyy}", item.EndDate) + "',couleur:'" + Utils.GetCongesTypeColor(item.Type) + "'},";
-                Utils.HTMLRaw(str);
-            }
+            String str = "{title: '" + item.Nom + "', start: '" + string.Format("{0:yyyy-MM-dd}", item.StartDate) + "', end: '" + string.Format("{0:yyyy-MM-dd}", item.EndDate) + "',color:'" + Utils.GetCongesTypeColor(item.Type) + "'},";
+            /*HttpUtility.HtmlEncode(str);
+           @Html.Raw(HttpUtility.HtmlDecode(str));*/
         }
-        if(ViewBag.Conges != null){
-            foreach (var item2 in ViewBag.Conges)
-            {
-                var color2 = (item2.Statut == "en attente" || item2.Statut == null) ? "en attente" : item2.TypeConges;
-                String str = "{Titre: '" + item2.TypeConges + "', début: '" + string.Format("{0:dd/MM/yyyy}", item2.StartDate) + "', fin: '" + string.Format("{0:dd/MM/yyyy}", item2.EndDate) + "', couleur:'" + Utils.GetCongesTypeColor(color2) + "'},";
-                Utils.HTMLRaw(str);
-            }
+    }
+    if(ViewBag.Conges != null){
+        foreach (var item2 in ViewBag.Conges)
+        {
+            var color2 = (item2.Statut == "En attente" || item2.Statut == null) ? "En attente" : item2.TypeConges;
+            String str = "{title: '" + item2.TypeConges + "', start: '" + string.Format("{0:dd/MM/yyyy}", item2.StartDate) + "', end: '" + string.Format("{0:dd/MM/yyyy}", item2.EndDate) + "', color:'" + Utils.GetCongesTypeColor(color2) + "'},";
+            HttpUtility.HtmlEncode(str);
+            @Html.Raw(HttpUtility.HtmlDecode(str));
         }
+    }
 
     }]
 

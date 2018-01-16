@@ -1,0 +1,41 @@
+﻿@model SaphirCongesCore.Models.Conges
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Détails</h2>
+
+<div>
+    <h4>Congés</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayName("Date de début : ")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StartDate)
+                </dd>
+                <dt>
+                    @Html.DisplayName("Date de fin : ")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.EndDate)
+                </dd>
+                <dt>
+                    @Html.DisplayName("Nombre de jours : ")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NoOfDays)
+                </dd>
+                <dt>
+                    @Html.DisplayName("Statut : ")
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Statut)
+                </dd>
+            </dl>
+</div>
+<p>
+    @Html.ActionLink("Retour", "Index")
+</p>

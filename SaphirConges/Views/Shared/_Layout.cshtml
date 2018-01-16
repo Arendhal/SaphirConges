@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+    @Styles.Render("~/Content/css")
+    
+    
+   
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("SAPHIR - Congés", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Congés", "Index", "Conges")</li>   
+                    <li>@Html.ActionLink("Employés", "Index", "Employe")</li>
+       
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Solde de congés <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Gestion du solde des employés", "Manage", "EmployeQuota")</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Voir mon solde", "Index", "EmployeQuota")</li>
+                            <li>@Html.ActionLink("Ajouter un quota pour un employé", "Create", "EmployeQuota")</li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Calendrier <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Editer/Voir la liste des jours fériés", "Index", "CongesGeneral")</li>
+                            <li>@Html.ActionLink("Choix du types de Congés", "Index", "CongesDescription")</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Ajouter un jour férié", "Create", "CongesGeneral")</li>
+                            <li class="divider"></li>
+
+
+                            <li>@Html.ActionLink("Voir le calendrier mensuel", "MonthCalendar", "CongesGeneral")</li>
+                            <li>@Html.ActionLink("Voir le calendrier annuel", "FullYearCalendar", "CongesGeneral")</li>
+
+                        </ul>
+                    </li>
+
+
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Administration <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Accueuil", "Index", "Admin")</li>
+                            <li>@Html.ActionLink("Demande de congés", "Requests", "Admin")</li>
+                            <li>@Html.ActionLink("Créer une demande", "Create", "Admin")</li>
+
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+                @Html.Partial("_LoginPartiel")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - SAPHIR </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("calendar", required: false)
+    @RenderSection("scripts", required: false)
+</body>
+</html>

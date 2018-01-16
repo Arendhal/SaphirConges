@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SaphirCongesCore.Models.CongesDescription>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Créer nouveau", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeConge)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CongesColor)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model){
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeConge)
+            </td>
+            <td>
+                <div style="background: @Html.Raw(item.CongesColor); width : 30%;">
+                    @Html.DisplayFor(modelItem => item.TypeConge)
+                </div>
+            </td>
+            <td>
+                @Html.ActionLink("Editer", "Edit", new { id = item.CongesDescriptionID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CongesDescriptionID }) |
+                @Html.ActionLink("Supprimer", "Delete", new { id = item.CongesDescriptionID })
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<br />
+<p>
+    <div class="alert alert-danger">Lors de la création de congés de nom et types identiques, le congé nouvellement créer remplacera l'ancien.</div>
+    <!-- <div class="alert alert-info">Créez au moins 3 types de congés avec des noms(jours fériés,personnel,congés maladies car ce sont les types les plus généraux).</div> -->
+</p>

@@ -1,0 +1,31 @@
+﻿@model SaphirCongesCore.Models.CongesDescription
+
+@{
+    ViewBag.Title = "Détails";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Description des congés</h4>
+    <hr />
+    <dl class="dl-horitzontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeConge)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.TypeConge)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CongesColor)
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.CongesColor)
+        </dd>
+    </dl>
+</div>
+
+<p>
+    @Html.ActionLink("Editer", "Edit", new { id = Model.CongesDescriptionID }) |
+    @Html.ActionLink("Retour", "Index")
+<p>

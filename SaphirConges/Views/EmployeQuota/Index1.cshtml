@@ -1,0 +1,113 @@
+﻿@model SaphirCongesCore.Models.EmployeQuota
+
+@{
+    ViewBag.Title = "Quota de congés";
+}
+@section calendar{
+    <script src="~/Scripts/Chart.js"></script>
+}
+<h2>@ViewBag.Message</h2>
+<div>
+    @{
+        var Day1 = new DateTime(DateTime.Now.Year, 1, 1);
+        var Day2 = new DateTime(DateTime.Now.Year, 12, 31);
+        <h4> Période de congés actuelle à partir du @Day1.ToString("dd/MM/yyyy") jusqu'au @Day2.ToString("dd/MM/yyyy") de @ViewBag.Username</h4>
+    }
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Nombre total de jour de congés
+        </dt>
+        <dd>
+            22,5
+        </dd>
+        <dt>
+            Congés pris
+        </dt>
+        <dd>
+            @ViewBag.approved
+        </dd>
+
+        <dt>
+            Congés restant
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NonPaidQuota)
+        </dd>
+    </dl>
+</div>
+<h4> Quota des employés</h4>
+<hr />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidQuota)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PaidQuota)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NonPaidQuota)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NonPaidQuota)
+        </dd>
+    </dl>
+</div>
+ @*
+
+<h4> Total de Congés pris cette année</h4>
+<div class="progress">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+
+        80%
+    </div>
+</div>
+<h4> Congés payés pris</h4>
+<div class="progress">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+
+        40%
+    </div>
+</div>
+<h4> Congés non payés pris</h4>
+<div class="progress">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+
+        50%
+    </div>
+</div>
+<div id="canvas-hldr">
+    <canvas id="chart-area" width="300" height="300" />
+</div>
+<script>
+    var pieData = [
+        {
+            value: 50,
+            color: "#F7464A",
+            highlight: "#FF5A5E",
+            label: "maladie"
+        },
+        {
+            value: 100,
+            color: "#FDB45C",
+            highlight: "#FFC870",
+            label: "non-payes"
+        },
+        {
+            value: 40,
+            color: "#949FB1",
+            highlight: "#A8B3C5",
+            label: "payes"
+        },
+    ];
+
+    window.onload = function () {
+        var context = document.getElementById("chart-area").getContext("2d");
+        window.myPi = new Chart(context).Pie(pieData);
+    };
+</script>*@
+
+
+
+

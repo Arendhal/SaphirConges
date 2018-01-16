@@ -1,0 +1,109 @@
+﻿@model IEnumerable<SaphirCongesCore.Models.EmployeQuota>
+@using SalesFirst.Core.Service;
+@using SaphirCongesCore.Utils;
+
+@{
+    ViewBag.Title = "Index";
+}
+@section calendar {
+    <script src="~/Scripts/Chart.js"></script>
+}
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Créer nouveau", "Create")
+<p>
+    <table class="table">
+        <tr>
+            <th>
+                Nom @*@Html.DisplayNameFor(model => model.EmployeID)*@
+            </th>
+            <th>
+                Solde total
+            </th>
+            <th>
+                Congés pris
+            </th>
+            <th>
+                Congé posés cette année
+            </th>
+            <th>
+                Congés restant cette année
+            <th />
+        </tr>
+
+        @{
+            string usernames = "";
+            string congesThisYear = "";
+            foreach (var item in Model)
+            {
+                EmployeeService employeService = new EmployeeService(new SalesFirst.Core.Data.EmployeeRepository(new SaphirCongesCore.Data.SaphirCongesDB()));
+                SalesFirst.Core.Model.Employee employe = employeService.GetEmployeeByEmployeeId(item.EmployeID);
+
+                <tr>
+                    <td>
+                        @Html.ActionLink(employe.Username, "Index", new { id = employe.EmployeeId })
+                        @{usernames += '"' + employe.Username + '"' + ",";}
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaidQuota)
+                    </td>
+
+                    <td>
+                        @Html.Raw(Utils.CongesPris(employe))
+                    </td>
+                    <td>
+                        @Html.Raw(Utils.CongesPosesInYear(employe, DateTime.Now.Year))
+                        @{congesThisYear += '"' + Utils.CongesPosesInYear(employe, DateTime.Now.Year).ToString() + '"' + ",";}
+                    </td>
+                    <td>
+                        @Html.Raw(item.PaidQuota - Utils.CongesPosesInYear(employe, DateTime.Now.Year))
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editer", "Edit", new { id = item.EmployeQuotaID })|
+                        @Html.ActionLink("Détails", "Details", new { id = item.EmployeQuotaID })|
+                        @Html.ActionLink("Supprimer", "Delete", new { id = item.EmployeQuotaID })|
+                    </td>
+
+                </tr>
+            }
+
+            <script>
+
+    var data = {
+        labels: [@Html.Raw(usernames)],
+        datasets: [
+            {
+                label: "My First dataset",
+                fillColor: "rgba(151,187,205,0.5)",
+                strokeColor: "rgba(151,187,205,0.8)",
+                highlightFill: "rgba(151,187,205,0.75)",
+                highlightStroke: "rgba(151,187,205,1)",
+                data: [@Html.Raw(congesThisYear)]
+            }
+        ]
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx).Bar(data, {
+            responsive: true
+        });
+    }
+
+
+
+            </script>
+        }
+    </table>
+    <h3> Congés posés par les employés cette année(@DateTime.Now.Year)</h3>
+    <div style="width:50%">
+        <canvas id="canvas"></canvas>
+    </div>
+
+    <div class="alert alert-danger">Avant de vous rendre sur la page "Solde de congés/Voir mon solde", assurez vous que votre nom figure dans cette liste.<br /> 
+    Si ce n'est pas le cas merci de cliquer sur "Créer nouveau".</div>
+
+
+
+
+

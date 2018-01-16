@@ -1,0 +1,53 @@
+﻿@model SaphirCongesCore.Models.EmployeQuota
+
+@{
+    ViewBag.Title = "Editer";
+}
+<h2> Editer</h2>
+@using (Html.BeginForm())
+{
+
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4> Quota des employés </h4>
+    <hr />
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.EmployeQuotaID)
+    <div class="form-group">
+        @Html.LabelFor(model => model.EmployeID, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.EmployeID, ViewBag.Employes as SelectList, "--Choisissez le nom de l'employé--", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmployeID)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PaidQuota, new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PaidQuota)
+            @Html.ValidationMessageFor(model => model.PaidQuota)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NonPaidQuota, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.NonPaidQuota)
+            @Html.ValidationMessageFor(model => model.NonPaidQuota)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Editer" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+<div>
+    @Html.ActionLink("Retour", "Index")
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

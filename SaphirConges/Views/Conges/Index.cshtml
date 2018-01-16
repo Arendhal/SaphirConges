@@ -1,0 +1,92 @@
+﻿@model IEnumerable<SaphirCongesCore.Models.Conges>
+
+@using SaphirCongesCore.Models;
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery.year_calendar.js"></script>
+<h2>Ma liste de congés</h2>
+<p>
+    @Html.ActionLink("Créer nouveau", "Create")
+</p>
+
+@{if (ViewBag.Message != null)
+
+    { <h1> @ViewBag.Message </h1> }
+else
+{
+
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayName("Date de début")
+            </th>
+            <th>
+                @Html.DisplayName("Date de Fin")
+            </th>
+
+            <th>
+                @Html.DisplayName("Nombre de jours")
+            </th>
+            <th>
+                @Html.DisplayName("Statut")
+            </th>
+            <th>
+                @Html.DisplayName("Type")
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoOfDays)
+                </td>
+                <td>
+                    @if (item.Statut == null)
+                    {
+                        <p>En attente</p>
+
+                    }
+                    else if (item.Statut == "Accepte")
+                    {
+                        <span class="glyphicon glyphicon-ok" title="Approved" data-toggle="tooltip"></span>
+
+                    }
+                    else
+                    {
+                        <span class="glyphicon glyphicon-remove" title="Rejected" data-toggle="tooltip"></span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeConges)
+                </td>
+                <td>
+                    @{
+                        if (item.Statut == null)
+                        {
+                            @Html.ActionLink("Editer", "Edit", new { id = item.CongesID }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Supprimer", "Delete", new { id = item.CongesID }, new { @class = "btn btn-danger" })
+                        }
+
+                    }
+                    @Html.ActionLink("Détails", "Details", new { id = item.CongesID }, new { @class = "btn btn-info" })
+
+                </td>
+            </tr>
+        }
+    </table>
+}
+}
+
+
+
+

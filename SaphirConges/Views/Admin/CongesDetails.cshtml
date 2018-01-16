@@ -1,0 +1,75 @@
+﻿@model SaphirCongesCore.Models.Conges
+
+@{
+    ViewBag.Title = "Conges Détails";
+}
+
+<h2>Congés Détails</h2>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li> Html.ActionLink("Demandes acceptées","Requests","Admin")
+        <li>
+        <li>@Html.ActionLink("Demande Rejetées", "RejectedRequests", "Admin")</li>
+        <li>@Html.ActionLink("Créer une demande", "Create", "Admin")</li>
+    </ul>
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EndDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EndDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NoOfDays)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NoOfDays)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HalfDay)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HalfDay)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookingDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.BookedBy)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BookedBy)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeConges)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeConges)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CongesDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CongesDescription)
+        </dd>
+    </dl>
+</div>
+@Html.ActionLink("Accepter", "Accept", new { id = Html.ValueFor(model => model.CongesID)) }, new {@class="btn btn-success"})
+@Html.ActionLink("Refuser", "Reject", new { id = Html.ValueFor(model => model.CongesID)) }, new {@class="btn btn-danger"})
+<p>
+    @Html.ActionLink("Retour", "Index")
+</p>

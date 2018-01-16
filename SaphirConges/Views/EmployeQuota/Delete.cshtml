@@ -1,0 +1,40 @@
+﻿@model SaphirCongesCore.Models.EmployeQuota
+
+@{
+    ViewBag.Title = "Supprimer";
+}
+<h2> Supprimer </h2>
+<h3>Etes vous certain de vouloir supprimer cela?</h3>
+<div>
+    <h4> Quota des employés</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidQuota)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PaidQuota)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NonPaidQuota)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NonPaidQuota)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmployeID)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" />|
+            @Html.ActionLink("Retour", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,99 @@
+﻿@using SaphirCongesCore.Utils;
+@{
+    ViewBag.Title = "Rechercher";
+}
+
+<h2> @ViewBag.Title</h2>
+@section calendar{
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/underscore.js"></script>
+    <script>
+	//AngularJS : Demo de recherche
+	var myApp = angular.module('myApp',[]);
+	myApp.controller('TableCtrl', ['$scope', function ($scope) {
+		  $scope.allItems = getDummyData();
+		  $scope.resetAll = function () {
+			$scope.filteredList = $scope.allItems;
+			$scope.newDate = '';
+			$scope.newName = '';
+			$scope.searchText = '';
+		}
+
+	  $scope.search = function () {
+			$scope.filteredList = _.filter($scope.allItems,
+				function (item) {
+					return searchUtil(item, $scope.searchText);
+			 });
+		if ($scope.searchText == '') {
+			$scope.filteredList = $scope.allItems;
+		}
+	}
+	$scope.resetAll();
+	}]);
+
+	function searchUtil(item, toSearch) {
+		return (item.name.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.Date.toLowerCase().indexOf(toSearch.toLowerCase()) > -1)?true:false;
+		}
+
+function getDummyData() {
+	return [
+		@{
+			  foreach (var item5 in Utils.ListeCongesComplete(DateTime.Now.Year))
+			{
+				 float day = item5.day;
+				 string status = item5.Statut;
+				 string type = item5.type;
+				 string tempday = (day == 1) ? "full-day" : "half-day";
+				 status = (status == null) ? "pending" : status;
+				 tempday = ", " + tempday;
+				status = ", "+status;
+				string name = item5.name + " - (" + type + tempday + status + ")";
+				 string str = "{Nom:'" + name + "', Date: '" + string.Format("{0:dd/mm/YYYY}", item5.date) + "'},";
+				@Html.Raw(str)
+			}
+		} ];
+	}
+    </script>
+
+    <script type="text/javascript">
+	$(document).ready(function(){
+		@{
+			foreach(var item in Utils.GetCongesNomEtColors())
+				{
+					//Html.Raw("func(("+item.Key+"','"+item.Value+ "');")
+				}
+		}
+
+	});
+funtion func(search,color){
+		$("td:contains('" + search +"')").each(function() {
+			var regex = new RegExp(search,'gi');
+			$(this).html($this).text().replace(regex,"<span style='background:"+color+";color:"+color+"; font-size:8px;line-height:10px;'>--</span>"+search());
+		});
+	}
+    </script>
+}
+<br />
+<br />
+<div ng-app="myApp">
+    <div ng-controller="TableCtrl">
+        <div class="input-group">
+            <input class="form-control" ng-model="searchText" placeholder="Filtrer" type="search" ng-change="search()" />
+        </div>
+        <table class="table  table-hover data-table sort display">
+            <thead>
+                <tr>
+                    <th class="Date"> <a href="" ng-click="columnToOrder='Date';reverse=!reverse"> Date </a> </th>
+                    <th class="name"> <a href="" ng-click="columnToOrder='name';reverse=!reverse"> Nom </a> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in filteredList | orderBy:columnToOrder:reverse">
+                    <td><b>{{item.Date}}</b></td>
+                    <td>{{item.name}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

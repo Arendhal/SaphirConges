@@ -4,6 +4,28 @@
     ViewBag.Title = "Créer";
 }
 
+@* Pour avoir le DatePicker *@
+<script>
+    
+    $(function () {
+        $(".datepicker").datepicker({ dateFormat: "dd/mm/yyyy" });
+    });
+
+    function SetWaterMark(txtcontrol, event) {
+        if (txtcontrol.value.lenght == 0 && event.type == "blur") {
+            var myvar = document.getElementById(CongesDescription);
+            txtcontrol.style.color = "red";
+            txtcontrol.value = myvar;
+        }
+        if (event.type == "focus") {
+            txtcontrol.style.color = "black";
+            txtcontrol.value = "";
+        }
+    }
+
+</script>
+
+
 <h2>Créer</h2>
 <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
 
@@ -35,7 +57,7 @@
             @Html.Label("Nombre total de jours", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NoOfDays)
-               <div class="halfday">
+                <div class="halfday">
                     @Html.CheckBox("ishalf")
                     @Html.Label("Présence de demi journée")
                     <span id="amorpm">
@@ -45,12 +67,12 @@
                         @Html.RadioButtonFor(model => model.HalfDay, "Après-midi")
                     </span>
                 </div>
-                 @Html.ValidationMessageFor(model => model.NoOfDays)
+                @Html.ValidationMessageFor(model => model.NoOfDays)
             </div>
         </div>
 
         <div class="form-group">
-         @Html.Label("Types de congés", new { @class = "control-label col-md-2" })
+            @Html.Label("Types de congés", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.TypeConges, ViewBag.HolidayTypes as SelectList, "-- Choisissez le type de congés --")
                 @Html.ValidationMessageFor(model => model.TypeConges)
@@ -58,23 +80,24 @@
         </div>
 
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.Label("Description des congés", new { @class = "control-label col-md-2" })
-             <div class="col-md-10">
-                  @Html.TextAreaFor(model => model.CongesDescription)
-                 @Html.ValidationMessageFor(model => model.CongesDescription)
-             </div>
-        </div>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.CongesDescription)
+                
+                @Html.ValidationMessageFor(model => model.CongesDescription)
+            </div>
+        </div>*@
 
         <div class="form-group">
-          <div class="col-md-offset-2 col-md-10">
-              <input type = "submit" value="Créer" class="btn btn-default" />
-          </div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Créer" class="btn btn-default" />
+            </div>
         </div>
-</div>
+    </div>
 }
 <div>
-    @Html.ActionLink("Retour","Index")
+    @Html.ActionLink("Retour", "Index")
 </div>
 
 @section Scripts
@@ -84,9 +107,3 @@
     @Scripts.Render("~/Scripts/customjs.js")
 }
 
-@* Pour avoir le DatePicker *@
-            <script>
-	$(function (){
-		$(".datepicker").datepicker({dateFormat:"dd/mm/yyyy"});
-	});
-            </script>

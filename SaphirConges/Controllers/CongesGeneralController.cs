@@ -61,19 +61,18 @@ namespace SaphirConges.Controllers
 
         public ActionResult FullYearCalendar()
         {
-            ClientDb clientDb = new ClientDb();
             var loggedInUser = User.Identity.Name;
             var employe = employeService.GetEmployeeByUsername(loggedInUser);
             if (employe == null || db.GetCongesNonRefuseByEmploye(employe).FirstOrDefault() == null)
             {
-                ViewBag.GeneralHolidays = db.CongesGeneral.ToList();
-                ViewBag.HolidaysDesc = db.GetAllCongesDescriptions.ToList();
-                ViewBag.Holidays = null;
+                ViewBag.CongesGeneral = db.CongesGeneral.ToList();
+                ViewBag.CongesDescription = db.GetAllCongesDescriptions.ToList();
+                ViewBag.Conges = null;
                 return View();
             }
 
             ViewBag.CongesGeneral = db.CongesGeneral.ToList();
-            ViewBag.Conges = db.GetCongesAccepteByEmploye(employe).ToList();
+            ViewBag.Conges = db.GetCongesNonRefuseByEmploye(employe).ToList();
 
             return View();
         }

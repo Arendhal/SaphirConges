@@ -114,7 +114,7 @@ namespace SaphirConges.Controllers
 
         //
         //POST: /CongesDesc/Delete/5
-        [HttpPost, ActionName("Supprimer")]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

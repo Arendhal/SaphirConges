@@ -16,7 +16,7 @@
             //Days colorify
             var date_styles = [
     @{
-
+      
         if (ViewBag.CongesGeneral != null)
         {
             foreach (var item in ViewBag.CongesGeneral)
@@ -36,9 +36,12 @@
 
 
                 var color = (item.Type == "CongeEmploye") ? "CongeEmploye" : "JoursFeries";
-                String str = "{ Début: nouvelle date(" + string.Format("{0:dd/MM/yyyy}", item.StartDate) + "), Fin: nouvelle date(" + string.Format("{0:dd/MM/yyyy}", item.EndDate) + "), label: '" + item.Nom + " ',Titre: '" + color + "' },";
-                @*Html.Raw(str)*@
+                String str = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item.EndDate) + "), label: " + item.Nom + " ,title: " + color + " },";
+               
+               @* @Html.Raw(str)*@
+
             }
+           
         }
 
 
@@ -51,12 +54,12 @@
                 item2.StartDate = item2.StartDate.AddMonths(-1);
                 item2.EndDate = item2.EndDate.AddMonths(-1);
                 var color2 = (item2.Statut == "En attente" || item2.Statut == null) ? "En attente" : " " + item2.TypeConges;
-                string str = "{ Début:" + string.Format("{0:dd/MM/yyyy}", item2.StartDate) + ", Fin:" + string.Format("{0:dd/MM/yyyy}", item2.EndDate) + "," + " ', Titre: '" + color2 + "' },";
+                String str = "{ Début:" + string.Format("{0:dd/MM/yyyy}", item2.StartDate) + ", Fin:" + string.Format("{0:dd/MM/yyyy}", item2.EndDate) + "," + " , Titre: " + color2 + " },";
                 Html.Raw(str);
                 if (item2.StartDate == item2.EndDate && item2.HalfDay == null)
                 {
                     item2.EndDate = item2.EndDate.AddDays(1);
-                    String str2 = "{ Début: nouvelle date(" + string.Format("{0:dd/MM/yyyy}", item2.StartDate) + "), Fin: nouvelle date" + string.Format("{0:dd/MM/yyyy}", item2.EndDate) + "), label: '" + color2 + " ', Titre: '" + color2 + "' },";
+                    String str2 = "{ Début: nouvelle date(" + string.Format("{0:dd/MM/yyyy}", item2.StartDate) + "), Fin: nouvelle date" + string.Format("{0:dd/MM/yyyy}", item2.EndDate) + "), label: " + color2 + " , Titre: " + color2 + " },";
                     @*Html.Raw(str2)*@
                 }
 
@@ -67,9 +70,7 @@
             ];
 
            //Events to click
-           var events = [
-
-           ];
+           var events = [ ];
 
                 //NN:Orange corners for half day
                 var halfDays = [
@@ -84,7 +85,7 @@
                              if(item3.HalfDay != null)
                              {
 
-                                 String str = "{ Date: nouvelle date(" + string.Format("{0:dd/MM/yyyy}", item3.EndDate) + "), Titre: 'Demi-journée' },";
+                                 String str = "{ Date: nouvelle date(" + string.Format("{0:dd/MM/yyyy}", item3.EndDate) + "), Titre: Demi-journée },";
                                  @*Html.Raw(str)*@
                              }
 
@@ -126,8 +127,8 @@
 
            $("#calendar-holder").year_calendar({
                     // year: 2013, // Optional, defaults to current year - pass in a year - Integer or String
-                    scroll_to_date: true, // Scroll to the current date?,
-                date_styles: date_styles,
+               scroll_to_date: true, // Scroll to the current date?,
+               date_styles: date_styles,
                 events: events,
                 event_click: event_click,
                 ///day_click: day_click,
@@ -153,7 +154,7 @@
 }
    
 <h2>Calendrier</h2>
-<div id='calendar-holder'>
+<div id="calendar-holder">
 
 </div>
 

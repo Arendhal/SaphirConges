@@ -179,11 +179,11 @@
                         var v_start = v.start;
                         var v_end = v.end;
                         var style = (v.type ? ' ' + v.type : '')
-                        if (v_end.valueOf() == date.valueOf()) {
+                        if (v_end.valueOf() === date.valueOf()) {
                             evt = '<div class="events event-end' + style + '" data-_id="' + v._id + '"></div>';
                             return;
                         }
-                        else if (v_start.valueOf() == date.valueOf()) {
+                        else if (v_start.valueOf() === date.valueOf()) {
                             evt = evt + '<div class="events event-start' + style + '" data-_id="' + v._id + '"></div>';
                             return;
                         }
@@ -196,7 +196,7 @@
                     var marker = '';
                     $.each(pl.options.markers, function (i, m) {
                         var v = m.date.setHours(12, 0);
-                        if (v.valueOf() == date.valueOf()) {
+                        if (v.valueOf() === date.valueOf()) {
                             marker = '<div class="markers" data-title="' + m.title + '"></div>';
                             return;
                         }
@@ -208,8 +208,10 @@
                         if (v.start.valueOf() <= date.valueOf() && v.end.valueOf() >= date.valueOf()) {
                             day_label = ' ' + v.label;
                             day_color = v.color;
+                            i++;
                             return;
                         }
+                        day_color = v.color; //Added by myself
                     });
 
                     //
@@ -230,7 +232,7 @@
             $.each(pl.options.date_styles, function (i, style) {
 
                 var test = $_legend.text();
-                if (test.indexOf(style.title) == -1)
+                if (test.indexOf(style.title) === -1)
                     $_legend.append("<div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar " + style.label+" "+style.title + " 'style='height:40px ;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px;'>" + style.title + "</span></div>");
 
             })

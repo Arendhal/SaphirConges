@@ -85,6 +85,10 @@ namespace SaphirConges.Controllers
             var employe = employeService.GetEmployeeByUsername(loggedInUser);
             if (ModelState.IsValid)
             {
+                if(conges.CongesDescription == null)
+                {
+                    conges.CongesDescription = "Congés '" + conges.TypeConges + " 'de " + employe.FirstName + " " + employe.LastName;
+                }
                 conges.Employe = employe;
                 conges.BookingDate = DateTime.Today;
                 conges.BookedBy = User.Identity.GetUserName();

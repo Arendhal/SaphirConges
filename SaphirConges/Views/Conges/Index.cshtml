@@ -33,7 +33,7 @@ else
                 @Html.DisplayName("Statut")
             </th>
             <th>
-                @Html.DisplayName("Type")
+                @Html.DisplayName("Description")
             </th>
         </tr>
         @foreach (var item in Model)
@@ -67,7 +67,7 @@ else
                     }
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TypeConges)
+                    @Html.DisplayFor(modelItem => item.CongesDescription)
                 </td>
                 <td>
                     @{

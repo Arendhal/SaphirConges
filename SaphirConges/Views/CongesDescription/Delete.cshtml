@@ -14,13 +14,13 @@
             @Html.DisplayNameFor(model => model.TypeConge)
         </dt>
         <dd>
-            @Html.DisplayNameFor(model => model.TypeConge)
+            @Html.DisplayFor(model => model.TypeConge)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.CongesColor)
         </dt>
         <dd>
-            @Html.DisplayNameFor(model => model.CongesColor)
+            @Html.DisplayFor(model => model.CongesColor)
         </dd>
     </dl>
 
@@ -28,7 +28,7 @@
     {
         @Html.AntiForgeryToken()
         <div class="form-actions no-color">
-            <input type="submit" value="Supprimer" class=btn btn-default" /> |
+            <input type="submit" value="Supprimer" class="btn btn-default" /> |
             @Html.ActionLink("Retour à la liste", "Index")
         </div>
     }

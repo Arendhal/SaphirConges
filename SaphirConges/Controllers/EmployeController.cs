@@ -24,7 +24,7 @@ namespace SaphirConges.Controllers
         {
             Directeur=1,
             Responsable=2,
-            Employe=3
+            Employe=3,
         };
 
         public void SetViewBagJobTitle(JobTitle job)
@@ -52,7 +52,7 @@ namespace SaphirConges.Controllers
         //GET: /Employe
         public ActionResult Index()
         {
-            return View(employeService.GetAll().OrderBy(s => s.JobTitle));
+            return View(employeService.GetAll().OrderBy(s=>s.JobTitle));
         }
 
         //

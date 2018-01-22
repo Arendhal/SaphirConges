@@ -13,23 +13,23 @@ namespace SaphirCongesCore.Models
 
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}", ApplyFormatInEditMode = false)]
         [CurrentDateCheck]
         [Display(Name ="Date de début")]
         public virtual DateTime StartDate { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}", ApplyFormatInEditMode = false)]
         [CongesValidation("StartDate")]
         [Display(Name = "Date de fin")]
         public virtual DateTime EndDate { get; set; }
 
         [Required]
-        [Range(0.5, 500)]
-        [DifferenceInDays("StartDate", "EndDate", "HalfDay")]
+        [Range(0.5, 100)]
+       
         [Display(Name = "Nombre de jours")]
-        public virtual float NoOfDays { get; set; }
+        public float NoOfDays { get; set; }
 
         [Display(Name = "Demi-journée:")]
         public virtual String HalfDay { get; set; }

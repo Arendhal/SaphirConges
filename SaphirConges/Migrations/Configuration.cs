@@ -1,4 +1,4 @@
-namespace HolidayApp.Migrations
+namespace SaphirConges.Migrations
 {
     using System;
     using System.Data.Entity;

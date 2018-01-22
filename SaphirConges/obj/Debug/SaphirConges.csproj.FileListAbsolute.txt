@@ -212,6 +212,7 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\HolidayApp.pdb
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Antlr3.Runtime.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\EntityFramework.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\EntityFramework.SqlServer.dll
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\HolidayApp.Core.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -269,7 +270,7 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Microsoft.Owin.Secur
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.csprojResolveAssemblyReference.cache
-C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\HolidayApp.Migrations.initial.resources
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.Migrations.Initial.resources
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.csproj.GenerateResource.Cache
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.csproj.CoreCompileInputs.cache
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\HolidayApp.dll

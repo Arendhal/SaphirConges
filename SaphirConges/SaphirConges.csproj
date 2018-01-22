@@ -52,7 +52,7 @@
     </Reference>
     <Reference Include="HolidayApp.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\HolidayApp.Core.dll</HintPath>
+      <HintPath>..\SaphirConges.Core\bin\Debug\HolidayApp.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SalesFirst.Core, Version=1.0.0.36130, Culture=neutral, processorArchitecture=MSIL">
@@ -197,9 +197,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801150404167_initial.cs" />
-    <Compile Include="Migrations\201801150404167_initial.Designer.cs">
-      <DependentUpon>201801150404167_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201801220430420_Initial.cs" />
+    <Compile Include="Migrations\201801220430420_Initial.Designer.cs">
+      <DependentUpon>201801220430420_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CompteViewModels.cs" />
@@ -421,8 +421,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801150404167_initial.resx">
-      <DependentUpon>201801150404167_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801220430420_Initial.resx">
+      <DependentUpon>201801220430420_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\HolidayReport.rdlc" />
     <EmbeddedResource Include="Reports\Report1.rdlc" />

@@ -53,9 +53,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\SaphirCongesDB.cs" />
-    <Compile Include="Migrations\201801150356594_initial.cs" />
-    <Compile Include="Migrations\201801150356594_initial.Designer.cs">
-      <DependentUpon>201801150356594_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201801220431196_Initial.cs" />
+    <Compile Include="Migrations\201801220431196_Initial.Designer.cs">
+      <DependentUpon>201801220431196_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801220738084_NoOfDaysFix1.cs" />
+    <Compile Include="Migrations\201801220738084_NoOfDaysFix1.Designer.cs">
+      <DependentUpon>201801220738084_NoOfDaysFix1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801220950048_NoOfDaysFix2.cs" />
+    <Compile Include="Migrations\201801220950048_NoOfDaysFix2.Designer.cs">
+      <DependentUpon>201801220950048_NoOfDaysFix2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801221022006_NoOfDaysFix3.cs" />
+    <Compile Include="Migrations\201801221022006_NoOfDaysFix3.Designer.cs">
+      <DependentUpon>201801221022006_NoOfDaysFix3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Utils\Utils.cs" />
@@ -93,8 +105,17 @@
     <Content Include="Scripts\jscolor.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801150356594_initial.resx">
-      <DependentUpon>201801150356594_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801220431196_Initial.resx">
+      <DependentUpon>201801220431196_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801220738084_NoOfDaysFix1.resx">
+      <DependentUpon>201801220738084_NoOfDaysFix1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801220950048_NoOfDaysFix2.resx">
+      <DependentUpon>201801220950048_NoOfDaysFix2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801221022006_NoOfDaysFix3.resx">
+      <DependentUpon>201801221022006_NoOfDaysFix3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

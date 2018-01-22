@@ -3,10 +3,10 @@ using SalesFirst.Core.Data;
 using SalesFirst.Core.Service;
 using SaphirCongesCore.Data;
 using SaphirCongesCore.Models;
-using SaphirCongesCore.Validation;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -37,6 +37,18 @@ namespace SaphirConges.Controllers
 
         }
 
+        private void MakeViewBag()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "Personnel", Value = "Personnel", Selected = true });
+            items.Add(new SelectListItem { Text = "Mensuel", Value = "Mensuel", });
+            items.Add(new SelectListItem { Text = "Annuel", Value = "Annuel", });
+            items.Add(new SelectListItem { Text = "Conges Maladie", Value = "Conges Maladie", });
+
+            ViewBag.TypeConges = new SelectList(db.GetAllEmployeCongesDescriptions, "TypeConges", "TypeConges");
+            ViewBag.TypeConges = items;
+        }
+
         readonly EmployeeRepository employeRepo;
         readonly EmployeeService employeService;
 
@@ -63,14 +75,7 @@ namespace SaphirConges.Controllers
         //GET: /Conges/Creer
         public ActionResult Create()
         {
-            List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "Personnel", Value = "Personnel", Selected = true });
-            items.Add(new SelectListItem { Text = "Mensuel", Value = "Mensuel", });
-            items.Add(new SelectListItem { Text = "Annuel", Value = "Annuel", });
-            items.Add(new SelectListItem { Text = "Conges Maladie", Value = "Conges Maladie", });
-
-            ViewBag.TypeConges = new SelectList(db.GetAllEmployeCongesDescriptions,"TypeConges","TypeConges");
-            ViewBag.TypeConges = items;
+            MakeViewBag();
             return View();
         }
 
@@ -78,12 +83,15 @@ namespace SaphirConges.Controllers
         //POST: /Conges/Creer
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CongesID,StartDate,EndDate,NoOfDays,Employe,BookingDate,BookedBy,TypeConges,CongesDescription,HalfDay")] Conges conges)
+        public ActionResult Create([Bind(Include = "CongesID,StartDate,EndDate,NoOfDays,Employe,BookingDate,BookedBy,TypeConges,CongesDescription")] Conges conges)
         {
-
+            MakeViewBag();
             var loggedInUser = User.Identity.Name;
             var employe = employeService.GetEmployeeByUsername(loggedInUser);
-            if (ModelState.IsValid)
+            var cult = System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+            var NoOfDaysDecimal = Request.Form["NoOfDays"];
+           
+            if (ModelState.IsValid || conges.NoOfDays==0)
             {
                 if(conges.CongesDescription == null)
                 {
@@ -92,6 +100,7 @@ namespace SaphirConges.Controllers
                 conges.Employe = employe;
                 conges.BookingDate = DateTime.Today;
                 conges.BookedBy = User.Identity.GetUserName();
+                conges.NoOfDays = Single.Parse(NoOfDaysDecimal, cult);
                 db.Conges.Add(conges);
                 db.SaveChanges();
 

@@ -131,11 +131,12 @@ namespace SaphirCongesCore.Utils
                 DateTime endDate = item.EndDate;
                 TimeSpan diff = endDate - startDate;
                 int days = diff.Days;
+              
                 bool b = false;
                 for (int i = 0; i <= days; i++)
                 {
                     var testDate = startDate.AddDays(i);
-                    if (testDate.Year == year)
+                    if (testDate.Year == year )
                     {
                         Conges conges = new Conges();
                         conges.BookedBy = item.BookedBy;
@@ -149,11 +150,15 @@ namespace SaphirCongesCore.Utils
                         conges.StartDate = testDate;
                         conges.Statut = item.Statut;
                         conges.HalfDay = item.HalfDay;
-
+                        
                         if (conges.HalfDay != null && b == false)
                         {
                             conges.NoOfDays = conges.NoOfDays / 2;
                             b = true;
+                        }
+                        if (testDate.DayOfWeek == DayOfWeek.Saturday || testDate.DayOfWeek == DayOfWeek.Sunday)
+                        {
+                            conges.NoOfDays--;
                         }
                         newliste.Add(conges);
                     }

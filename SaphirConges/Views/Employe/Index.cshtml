@@ -42,7 +42,17 @@
             @Html.DisplayFor(modelItem => item.LastName)
         </td>                
         <td>
-            @Html.DisplayFor(modelItem => item.Username)
+            @{
+                var username = item.Username;
+                string result = "";
+                if (username.Contains('@'))
+                {
+                    int index = username.IndexOf('@');
+                    result = username.Substring(0, index);
+                   
+                }
+            }
+            @Html.DisplayFor(modelItem => result)
         </td>               
         <td>
             @Html.DisplayFor(modelItem => item.BirthDate)

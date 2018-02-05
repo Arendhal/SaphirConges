@@ -81,7 +81,7 @@
         // Init
         Calendar.prototype.init = function () {
             this.print();
-        }
+        };
 
         Calendar.prototype.print = function (year) {
             //
@@ -140,7 +140,7 @@
 
                 //
                 // Check for leap year
-                if (o === 'FEB') {
+                if (o === 'FEV') {
                     if (pl.isLeap(the_year)) {
                         month_days[i] = 29;
                     } else {
@@ -148,7 +148,7 @@
                     }
                 }
 
-                for (j = 1; j <= parseInt(month_days[i]) ; j++) {
+                for (j = 1; j <= parseInt(month_days[i]); j++) {
                     //
                     // Check for today
                     var today = '';
@@ -163,10 +163,10 @@
                         var date = new Date(12 + '/' + j + '/' + (the_year - 1));
                     }
                     else if (mon === 13) {
-                        var date = new Date(1 + '/' + j + '/' + (the_year + 1));
+                        date = new Date(1 + '/' + j + '/' + (the_year + 1));
                     }
                     else {
-                        var date = new Date(mon + '/' + j + '/' + the_year);
+                        date = new Date(mon + '/' + j + '/' + the_year);
                     }
                     date.setHours(12, 0);
                     var da = date.getDay();
@@ -178,7 +178,7 @@
                     $.each(pl.options.events, function (i, v) {
                         var v_start = v.start;
                         var v_end = v.end;
-                        var style = (v.type ? ' ' + v.type : '')
+                        var style = (v.type ? ' ' + v.type : '');
                         if (v_end.valueOf() === date.valueOf()) {
                             evt = '<div class="events event-end' + style + '" data-_id="' + v._id + '"></div>';
                             return;
@@ -225,19 +225,19 @@
                 $_calendar.append('<div class=\"clear\"></div>');
             });
 
-            $_calendar.append('<div id=\"legend\"></div>');
+            $_calendar.append('<div id=\"legend\" style=\"color:whitesmoke;\"></div>');
             $_legend = $('#legend');
-            $_legend.append("<div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px; color:black;'>Jours ouvres</span></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'><div class='markers'></div></div><span style='margin-left:-15px;  line-height: 35px; color:black;'>Demi-journees</span></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar weekend ' style='height:40px; background:#00C1F0;'><div></div></div><span style='margin-left:-15px;  line-height: 35px; color:black;'>Week-end</span></div>");
+            $_legend.append("<div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px; color:white;'>Jours ouvres</span></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'><div class='markers'></div></div><span style='margin-left:-15px;  line-height: 35px; color:white;'>Demi-journees</span></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar weekend ' style='height:40px; background:#00C1F0;'><div></div></div><span style='margin-left:-15px;  line-height: 35px; color:white;'>Week-end</span></div>");
 
             $.each(pl.options.date_styles, function (i, style) {
 
                 var test = $_legend.text();
                 if (test.indexOf(style.title) === -1)
-                    $_legend.append("<div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar " + style.label+" "+style.title + " 'style='height:40px ;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px;'>" + style.title + "</span></div>");
+                    $_legend.append("<div style=' float:left; margin-right:20px; '> <div class='legend-item label label-calendar " + style.label + " " + style.title + " 'style='height:40px;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px;'>" + style.title + "</span></div>");
 
-            })
+            });
 
-        }
+        };
 
         //
         // Previous / Next Year on click events
@@ -262,11 +262,11 @@
 
         $(document).on('mousedown', '#year-calendar .events', function (e) {
             e.stopPropagation();
-        })
+        });
 
         $(document).on('mousedown', '#year-calendar .markers', function (e) {
             e.stopPropagation();
-        })
+        });
 
         /*
             $(document).on('mouseup', '#year-calendar .events', function(e) {
@@ -296,7 +296,7 @@
         $(document).on('click', 'body', function (e) {
             $('#year-calendar .events').removeClass('selected');
             $('#year-calendar .markers').removeClass('selected');
-        })
+        });
 
 
         $(document).on('click', '#year-calendar .day', function (e) {
@@ -304,21 +304,21 @@
             $('#year-calendar .markers').removeClass('selected');
             if ($.isFunction(pl.options.day_click))
                 pl.options.day_click($(this));
-        })
+        });
 
         $(document).on('mousedown', '#year-calendar .day', function (e) {
             e.preventDefault();
             if (DAY_SELECTED || DAY_SELECTED2)
                 cancelSelect();
             startSelect($(this));
-        })
+        });
 
         $(document).on('mouseup', '#year-calendar .day', function (e) {
             e.preventDefault();
             e.stopPropagation();
             if (DAY_SELECTED && !DAY_SELECTED2)
                 endSelect($(this));
-        })
+        });
 
         var DAY_SELECTED = null;
         var DAY_SELECTED2 = null;
@@ -328,18 +328,18 @@
             DAY_SELECTED = day;
             dindex = day.index("#year-calendar .day");
             $(document).on('mouseover', '#year-calendar .day', selectRangeOver);
-            $(document).on('mouseout', '#year-calendar .day', selectRangeOut)
+            $(document).on('mouseout', '#year-calendar .day', selectRangeOut);
         }
 
         var selectRangeOver = function (e) {
             var idx = $(this).index("#year-calendar .day");
             $('#year-calendar .day').filter(':lt(' + (dindex + 1) + '):gt(' + (idx - 1) + ')').addClass('selected');
             $('#year-calendar .day').filter(':lt(' + (idx + 1) + '):gt(' + (dindex - 1) + ')').addClass('selected');
-        }
+        };
         var selectRangeOut = function (e) {
             $('#year-calendar .day').removeClass('selected');
             $(DAY_SELECTED).addClass('selected');
-        }
+        };
 
         function endSelect(day) {
             DAY_SELECTED2 = day;
@@ -374,9 +374,9 @@
         // Simple JS function to check if leap year
         Calendar.prototype.isLeap = function (year) {
             var leap = 0;
-            leap = new Date(year, 1, 29).getMonth() == 1;
+            leap = new Date(year, 1, 29).getMonth() === 1;
             return leap;
-        }
+        };
 
         //
         // Method to return full date
@@ -402,7 +402,7 @@
             }
 
             return returned_date;
-        }
+        };
 
         //
         // Plugin Instantiation
@@ -412,7 +412,7 @@
                     $.data(this, 'plugin_' + pluginName, new Calendar(this, options));
                 }
             });
-        }
+        };
     }
 
     /*global define:true */

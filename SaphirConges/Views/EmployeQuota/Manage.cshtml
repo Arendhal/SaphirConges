@@ -15,7 +15,7 @@
     <table class="table">
         <tr>
             <th>
-                Nom @*@Html.DisplayNameFor(model => model.EmployeID)*@
+                Nom d'utilisateur
             </th>
             <th>
                 Solde total
@@ -33,6 +33,7 @@
 
         @{
             string usernames = "";
+            
             string congesThisYear = "";
             foreach (var item in Model)
             {
@@ -41,8 +42,10 @@
 
                 <tr>
                     <td>
-                        @Html.ActionLink(employe.Username, "Index", new { id = employe.EmployeeId })
-                        @{usernames += '"' + employe.Username + '"' + ",";}
+                        @{
+                            usernames += '"' + employe.Username + '"' + ",";
+                            @Html.ActionLink(employe.Username.Substring(0,employe.Username.IndexOf('@')), "Index", new { id = employe.EmployeeId })
+                         }
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.PaidQuota)
@@ -53,7 +56,7 @@
                     </td>
                     <td>
                         @Html.Raw(Utils.CongesPosesInYear(employe, DateTime.Now.Year))
-                        @{congesThisYear += '"' + Utils.CongesPosesInYear(employe, DateTime.Now.Year).ToString() + '"' + ",";}
+                        @{congesThisYear += '"' + Math.Round(Utils.CongesPosesInYear(employe, DateTime.Now.Year)).ToString() + '"' + ",";}
                     </td>
                     <td>
                         @Html.Raw(item.PaidQuota - Utils.CongesPosesInYear(employe, DateTime.Now.Year))
@@ -96,12 +99,16 @@
         }
     </table>
     <h3> Congés posés par les employés cette année(@DateTime.Now.Year)</h3>
+    
     <div style="width:50%">
         <canvas id="canvas"></canvas>
     </div>
 
-    <div class="alert alert-danger">Avant de vous rendre sur la page "Solde de congés/Voir mon solde", assurez vous que votre nom figure dans cette liste.<br /> 
-    Si ce n'est pas le cas merci de cliquer sur "Créer nouveau".</div>
+    <div class="alert alert-danger">
+        Attention ! Les valeurs affichés par les graphiques sont arrondis à l'entier le plus proches!<br /><br/>
+        Avant de vous rendre sur la page "Solde de congés/Voir mon solde", assurez vous que votre nom figure dans cette liste.<br />
+        Si ce n'est pas le cas merci de cliquer sur "Créer nouveau".
+    </div>
 
 
 

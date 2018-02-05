@@ -141,10 +141,11 @@ namespace SaphirConges.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CongesGeneralID,Nom,Description,StartDate,EndDate,Frequency")] CongesGeneral congesGen)
         {
-
+            congesGen.Type = "JoursFeries";
             if (ModelState.IsValid)
             {
-                db.Entry(congesGen).State = EntityState.Modified;
+                
+                db.Entry(congesGen).State = EntityState.Modified;  
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -170,6 +171,8 @@ namespace SaphirConges.Controllers
 
         //
         //POST: /General/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             CongesGeneral congesGen = db.CongesGeneral.Find(id);

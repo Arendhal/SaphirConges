@@ -132,6 +132,7 @@
 #legend .legend-item span {
 	padding: 0 5px;
 	line-height: 35px;
+    color : whitesmoke;
 }
 
 #year-calendar .markers {

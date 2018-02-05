@@ -10,39 +10,44 @@
 
 <h2>@ViewBag.Message</h2>
 <hr />
+<div class="alert alert-danger">
+    Attention ! Les valeurs affichés par les graphiques sont arrondis à l'entier le plus proches!
+</div>
+
 <div>
     @{
         var Day1 = new DateTime(DateTime.Now.Year, 1, 1);
         var Day2 = new DateTime(DateTime.Now.Year, 12, 31);
+        var FullUsername = ViewBag.Username + "@apexure.com";
         <h4> Période de congés à partir du @Day1.ToString("td/MM/yyyy") jusqu'au @Day2.ToString("td/MM/yyyy") de <strong>@ViewBag.Username</strong></h4>
     }
-   
-        <dl class="dl-horizontal">
-            <dt>
-                Solde total
-            </dt>
-            <dd>
-                @ViewBag.Entitlement jours
-            </dd>
-            <dt>
-                Congés pris
-            </dt>
-            <dd>
-                @ViewBag.CongesPris jours
-            </dd>
-            <dt>
-                Pris cette année
-            </dt>
-            <dd>
-                @ViewBag.CongesPrisThisYear jours
-            </dd>
-            <dt>
-                Restant cette année
-            </dt>
-            <dd>
-                @ViewBag.Restant jours
-            </dd>
-        </dl>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Solde total
+        </dt>
+        <dd>
+            @ViewBag.Entitlement jours
+        </dd>
+        <dt>
+            Congés pris
+        </dt>
+        <dd>
+            @ViewBag.CongesPris jours
+        </dd>
+        <dt>
+            Pris cette année
+        </dt>
+        <dd>
+            @ViewBag.CongesPrisThisYear jours
+        </dd>
+        <dt>
+            Restant cette année
+        </dt>
+        <dd>
+            @ViewBag.Restant jours
+        </dd>
+    </dl>
 </div>
 
 
@@ -60,9 +65,9 @@
 
       var pieData = [
 
-        @foreach (var grp in Utils.TypesCongesPris(ViewBag.Username))
+        @foreach (var grp in Utils.TypesCongesPris(FullUsername))
     {
-            @Html.Raw("{value: " + grp.Value + ", color: '" + Utils.GetCongesTypeColor(grp.Key) + "',highlight: '" + Utils.GetCongesTypeColor(grp.Key)+"',label: '" + grp.Key + "'},")
+            @Html.Raw("{value: " + Math.Round(grp.Value) + ", color: '" + Utils.GetCongesTypeColor(grp.Key) + "',highlight: '" + Utils.GetCongesTypeColor(grp.Key)+"',label: '" + grp.Key + "'},")
     }
 
     ];
@@ -101,10 +106,10 @@
        @foreach (var grp2 in Utils.TypesCongesPrisInYear(ViewBag.Username, DateTime.Now.Year))
     {
 
-            @Html.Raw("{value: " + grp2.Value + ", color: '" + Utils.GetCongesTypeColor(grp2.Key) + "',highlight: '" + Utils.GetCongesTypeColor(grp2.Key)+"',label: '" + grp2.Key + "'},")
+            @Html.Raw("{value: " + Math.Round(grp2.Value) + ", color: '" + Utils.GetCongesTypeColor(grp2.Key) + "',highlight: '" + Utils.GetCongesTypeColor(grp2.Key)+"',label: '" + grp2.Key + "'},")
     }
 
-          @Html.Raw("{value: " + ViewBag.Restant + ", color: '" + "green" + "',highlight: '" + "green" + "',label: '" + "Restant" + "'},")
+          @Html.Raw("{value: " + Math.Round(ViewBag.Restant) + ", color: '" + "green" + "',highlight: '" + "green" + "',label: '" + "Restant" + "'},")
 
     ];
 
@@ -116,5 +121,4 @@
     };
 
 </script>
-
 

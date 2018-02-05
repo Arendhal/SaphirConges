@@ -5,12 +5,21 @@
     using (Html.BeginForm("LogOff", "Compte", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
     @Html.AntiForgeryToken()
+ 
+    var username = User.Identity.GetUserName();
+    var result="";
+    if (username.Contains('@'))
+    {
+        int index = username.IndexOf('@');
+        result = username.Substring(0, index);
+    }
+   
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Bienvenue " + User.Identity.GetUserName() + "!", "Manage", "Compte", routeValues: null, htmlAttributes: new { title = "Gerer" })
+            @Html.ActionLink("Bienvenue " + result + "!", "Manage", "Compte", routeValues: null, htmlAttributes: new { title = "Gerer" })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Quitter</a></li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a></li>
     </ul>
     }
 }

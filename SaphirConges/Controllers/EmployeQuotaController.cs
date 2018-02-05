@@ -78,17 +78,26 @@ namespace SaphirConges.Controllers
                 id  = employeService.GetEmployeeByUsername(User.Identity.Name).EmployeeId;
             }
 
-            var employe = employeService.GetEmployeeByEmployeeId(id);
+            var employe = employeService.GetEmployeeByEmployeeId(id);          
+            string Username = employe.Username;
+            string result = "";
             if ((employe == null) || db.GetEmployeQuotaByEmploye(employe) == null)
             {
                 ViewBag.Message = "Pas d'information de quota.";
                 return View();
             }
-            ViewBag.Username = employe.Username;
+
+            if (Username.Contains('@')) // to hide thge @apexure.com part of the username
+            {
+                int index = Username.IndexOf('@');
+                result = Username.Substring(0, index);
+                ViewBag.Username = result;
+            }
+           
             ViewBag.Entitlement = db.GetEmployeQuotaByEmploye(employe).PaidQuota;
             ViewBag.CongesPris = Utils.CongesPris(employe);
             ViewBag.CongesPrisThisYear = Utils.CongesPosesInYear(employe, DateTime.Now.Year);
-            ViewBag.Restant = Math.Round(db.GetEmployeQuotaByEmploye(employe).PaidQuota - Utils.CongesPosesInYear(employe, DateTime.Now.Year));
+            ViewBag.Restant = db.GetEmployeQuotaByEmploye(employe).PaidQuota - Utils.CongesPosesInYear(employe, DateTime.Now.Year);
             ViewData["PourcentRestant"] = Utils.CongesPosesInYear(employe, DateTime.Now.Year) / db.GetEmployeQuotaByEmploye(employe).PaidQuota;
             return View(db.GetEmployeQuotaByEmploye(employe));
         }

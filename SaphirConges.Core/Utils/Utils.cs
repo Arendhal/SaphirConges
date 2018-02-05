@@ -160,6 +160,10 @@ namespace SaphirCongesCore.Utils
                         {
                             conges.NoOfDays--;
                         }
+                        if(testDate.DayOfWeek == DayOfWeek.Friday)
+                        {
+                            conges.NoOfDays -= (float)0.5;
+                        }
                         newliste.Add(conges);
                     }
                 }

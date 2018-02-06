@@ -392,6 +392,7 @@
     <Content Include="Views\CongesDescription\Details.cshtml" />
     <Content Include="Views\CongesDescription\Edit.cshtml" />
     <Content Include="Views\CongesDescription\Index.cshtml" />
+    <Content Include="Views\Conges\FullYearCalendar.cshtml" />
     <None Include="_SaphirCongesDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>_SaphirCongesDataSet.Designer.cs</LastGenOutput>

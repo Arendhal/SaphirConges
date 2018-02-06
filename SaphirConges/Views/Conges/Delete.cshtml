@@ -31,6 +31,13 @@
             @Html.DisplayName("Statut: ")
         </dt>
         <dd>
+            @{
+                if (Model.Statut == null)
+                {
+                    Model.Statut = "En attente";
+                }
+            }
+
             @Html.DisplayFor(model => model.Statut)
         </dd>
     </dl>

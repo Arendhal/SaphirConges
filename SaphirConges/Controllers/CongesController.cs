@@ -58,6 +58,23 @@ namespace SaphirConges.Controllers
             employeService = new EmployeeService(employeRepo);
         }
 
+        public ActionResult FullYearCalendar()
+        {
+            var loggedInUser = User.Identity.Name;
+            var employe = employeService.GetEmployeeByUsername(loggedInUser);
+            if (employe == null || db.GetCongesNonRefuseByEmploye(employe).FirstOrDefault() == null)
+            {
+                ViewBag.CongesGeneral = db.CongesGeneral.ToList();
+                ViewBag.CongesDescription = db.GetAllCongesDescriptions.ToList();
+                ViewBag.Conges = null;
+                return View();
+            }
+
+            ViewBag.CongesGeneral = db.CongesGeneral.ToList();
+            ViewBag.Conges = db.GetCongesNonRefuseByEmploye(employe).ToList();
+
+            return View();
+        }
         public ActionResult Index()
         {
             var loggedInUser = User.Identity.Name;
@@ -105,8 +122,66 @@ namespace SaphirConges.Controllers
                 db.SaveChanges();
 
                 //Code envoi de mail si besoin
-                return RedirectToAction("Index");
+                return RedirectToAction("FullYearCalendar");
 
+            }
+            return View(conges);
+        }
+
+        //
+        //GET: Conges/Edit/5
+        public ActionResult Edit(int id)
+        {
+            MakeViewBag();
+            Conges conges = db.Conges.Find(id);
+            if (conges == null)
+            {
+                return HttpNotFound();
+            }
+            if (conges.Statut != null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var loggedInUser = User.Identity.Name;
+            var employe = employeService.GetEmployeeByUsername(loggedInUser);
+            ViewBag.EmployeID = employe.EmployeeId;
+
+
+            /*List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "Personnel", Value = "Personnel", Selected = true });
+            items.Add(new SelectListItem { Text = "Mensuel", Value = "Mensuel", });
+            items.Add(new SelectListItem { Text = "Annuel", Value = "Annuel", });
+            items.Add(new SelectListItem { Text = "Conges Maladie", Value = "Conges Maladie", });
+
+            ViewBag.HolidayType = items;*/
+            return View(conges);
+        }
+
+        //
+        //Post: /Conges/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "CongesID,StartDate,EndDate,NoOfDays,Employe,TypeConges,")] Conges conges)
+        {
+            MakeViewBag();
+            var loggedInUser = User.Identity.Name;
+            var employe = employeService.GetEmployeeByUsername(loggedInUser);
+            var cult = System.Threading.Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+            var NoOfDaysDecimal = Request.Form["NoOfDays"];
+            if (ModelState.IsValid == false)
+            {
+                if (conges.CongesDescription == null)
+                {
+                    conges.CongesDescription = "Congés '" + conges.TypeConges + " 'de " + employe.FirstName + " " + employe.LastName;
+                }
+                conges.Employe = employe;
+                conges.BookingDate = DateTime.Today;
+                conges.NoOfDays = Single.Parse(NoOfDaysDecimal, cult);
+                db.Entry(conges).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("FullYearCalendar");
+  
             }
             return View(conges);
         }
@@ -151,54 +226,7 @@ namespace SaphirConges.Controllers
 
         }
 
-        //
-        //GET: Conges/Edit/5
-        public ActionResult Edit(int id)
-        {
-            Conges conges = db.Conges.Find(id);
-            if (conges == null)
-            {
-                return HttpNotFound();
-            }
-            if ( conges.Statut != null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            var loggedInUser = User.Identity.Name;
-            var employe = employeService.GetEmployeeByUsername(loggedInUser);
-            ViewBag.EmployeID = employe.EmployeeId;
-
-
-            List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "Personnel", Value = "Personnel", Selected = true });
-            items.Add(new SelectListItem { Text = "Mensuel", Value = "Mensuel", });
-            items.Add(new SelectListItem { Text = "Annuel", Value = "Annuel", });
-            items.Add(new SelectListItem { Text = "Conges Maladie", Value = "Conges Maladie", });
-
-            ViewBag.HolidayType = items;
-            return View(conges);
-        }
-
-        //
-        //Post: /Conges/Edit/5
-        [HttpPost, ActionName("Editer")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CongesID,StartDate,EndDate,NoOfDays,Employe,HalfDay,TypeConges,CongesDescription")] Conges conges)
-        {
-
-            var loggedInUser = User.Identity.Name;
-            var employe = employeService.GetEmployeeByUsername(loggedInUser);
-            if (ModelState.IsValid)
-            {
-                conges.Employe = employe;
-                db.Entry(conges).State = EntityState.Modified;
-                conges.BookingDate = DateTime.Today;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(conges);
-        }
+      
 
         //Generation des rapports
         //GET: /Holiday/Report

@@ -78,25 +78,19 @@
                 //NN:Orange corners for half day
                 var halfDays = [
                  @{
-                     var isFriday = DayOfWeek.Friday;
-
-                     /*NN: get half days */
-                     if (ViewBag.Conges != null )
+                     /* get half days */
+                     /*if (ViewBag.Conges != null )
                      {
-
                          foreach (var item3 in ViewBag.Conges)
                          {
-                             /*NN: checks if half day to dislpay is weekend, then skips*/
-                              if(item3.HalfDay == null)
-                             {
-
-                                 String str = "{ date: new Date(" + string.Format("{0:yyyy, MM, dd}", item3.EndDate) + "), title: 'Half Day' },";
-
-                                  @Html.Raw(str)
-                             }
+                             //item3.StartDate = item3.StartDate.AddMonths(-1);
+                             //item3.EndDate = item3.EndDate.AddMonths(-1);
+                             //item3.EndDate = item3.EndDate.AddDays(1);
+                             String str = "{ date: new Date(" + string.Format("{0:yyyy, MM, dd}", (Utils.GetFriday(item3.StartDate, item3.EndDate))) + "), title: 'Half Day' },";
+                            @Html.Raw(str)
 
                          }
-                     }
+                     }*/
 
                 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Data.Entity;
 using SalesFirst.Core.Model;
 using SaphirCongesCore.Data;
 using SaphirCongesCore.Models;
@@ -53,12 +54,27 @@ namespace SaphirCongesCore.Utils
             return result;
         }
 
+        public static DateTime GetFriday(DateTime Day1, DateTime Day2)
+        {
+            var Friday = new DateTime();
+            int nb = 0; 
+            while (Day1 != Day2)
+            {
+                if (Day1.DayOfWeek == DayOfWeek.Friday)
+                {
+                    nb++;
+                    return Day1;  
+                }
+               Day1= Day1.AddDays(1);
+            }
+            return Day1;
+        }
+
+
         public static DateTime SetAnneeActuelle(DateTime date)
         {
             return new DateTime(DateTime.Now.Year, date.Month, date.Day);
         }
-
-
 
         public static List<CongesEnum> ListeCongesComplete(int year)
         {

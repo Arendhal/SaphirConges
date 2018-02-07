@@ -39,18 +39,17 @@ namespace SaphirConges.Controllers
 
         //
         //GET: /Compte/Login
-        [AllowAnonymous] // Peut être a effacer
+        [AllowAnonymous] 
         public ActionResult Login(string returnUrl)
         {
-            ViewBag.Employe = new SelectList(employeService.GetAll(), "Username", "Username");
-            ViewBag.ReturnUrl = returnUrl;
+           ViewBag.Employe = new SelectList(employeService.GetAll(), "Username", "Username");
             return View();
         }
 
         //
         //POST :/Compte/Login
         [HttpPost]
-        [AllowAnonymous] // Peut être a effacer
+        [AllowAnonymous] 
         [ValidateAntiForgeryToken] //Mesure de sécurité de base dans les applications MVC
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {

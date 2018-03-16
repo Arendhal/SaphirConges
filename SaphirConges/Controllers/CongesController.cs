@@ -4,6 +4,7 @@ using SalesFirst.Core.Service;
 using SaphirCongesCore.Data;
 using SaphirCongesCore.Models;
 using System;
+using SaphirCongesCore.Utils;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Globalization;
@@ -62,6 +63,7 @@ namespace SaphirConges.Controllers
         {
             var loggedInUser = User.Identity.Name;
             var employe = employeService.GetEmployeeByUsername(loggedInUser);
+           // Utils.GetPublicHoliday();
             if (employe == null || db.GetCongesNonRefuseByEmploye(employe).FirstOrDefault() == null)
             {
                 ViewBag.CongesGeneral = db.CongesGeneral.ToList();
@@ -70,7 +72,8 @@ namespace SaphirConges.Controllers
                 return View();
             }
 
-            ViewBag.CongesGeneral = db.CongesGeneral.ToList();
+            ViewBag.CongesGeneral = Utils.GetPublicHoliday();
+            //ViewBag.CongesGeneral = db.CongesGeneral.ToList();
             ViewBag.Conges = db.GetCongesNonRefuseByEmploye(employe).ToList();
 
             return View();

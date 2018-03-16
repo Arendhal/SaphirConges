@@ -37,7 +37,7 @@
 
                 var color = (item.Type == "CongeEmploye") ? "CongeEmploye" : "JoursFeries";
                 String str = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item.EndDate) + "), label: '" + color + " ', title: '" + color + "' },";
-               @Html.Raw(str)
+                @Html.Raw(str)
 
             }
 
@@ -161,4 +161,7 @@
 <br />
 <div class=" col-md-offset-2 btn btn-default">
     @Html.ActionLink("Retour au congés", "Index")
+</div>
+<div class="alert alert-danger">
+    Attention ! Certains congés ne s'appliquent pas dans votre pays!<br /> Merci d'en tenir compte!.
 </div>

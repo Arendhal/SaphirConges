@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Nager.Date;
 using System.Data.Entity;
 using SalesFirst.Core.Model;
 using SaphirCongesCore.Data;
 using SaphirCongesCore.Models;
 using SalesFirst.Core.Service;
+using Nager.Date.PublicHolidays;
 using System.Collections.Generic;
 using System.Web;
 
@@ -70,6 +72,26 @@ namespace SaphirCongesCore.Utils
             return Day1;
         }
 
+        public static List<CongesGeneral> GetPublicHoliday()
+        {
+            SaphirCongesDB db = new SaphirCongesDB();
+            List<CongesGeneral> congesGeneral = new List<CongesGeneral>();
+            var startDate = new DateTime(DateTime.Now.Year, 1, 1);
+            var endDate = new DateTime(DateTime.Now.Year, 12, 31);
+            var publicHolidays = DateSystem.GetPublicHoliday(CountryCode.FR, startDate, endDate);
+            foreach (var publicHoliday in publicHolidays)
+            {
+                CongesGeneral congesGen = new CongesGeneral();
+                congesGen.Frequency = Frequence.Annuel;
+                congesGen.StartDate = publicHoliday.Date;
+                congesGen.EndDate = publicHoliday.Date;
+                congesGen.Nom = publicHoliday.LocalName;
+                congesGen.Description = publicHoliday.LocalName;
+                congesGen.Type = "JoursFeries";
+                congesGeneral.Add(congesGen);
+            }
+            return congesGeneral;
+        }
 
         public static DateTime SetAnneeActuelle(DateTime date)
         {

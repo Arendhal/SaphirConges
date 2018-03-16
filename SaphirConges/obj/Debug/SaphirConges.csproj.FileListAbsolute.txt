@@ -275,3 +275,4 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.c
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.csproj.CoreCompileInputs.cache
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\HolidayApp.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\HolidayApp.pdb
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Nager.Date.dll

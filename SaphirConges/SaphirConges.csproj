@@ -55,6 +55,9 @@
       <HintPath>..\SaphirConges.Core\bin\Debug\HolidayApp.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Nager.Date, Version=1.19.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nager.Date.1.19.3\lib\net45\Nager.Date.dll</HintPath>
+    </Reference>
     <Reference Include="SalesFirst.Core, Version=1.0.0.36130, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\References\SalesFirst.Core.dll</HintPath>

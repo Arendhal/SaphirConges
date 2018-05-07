@@ -66,3 +66,4 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCon
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\HolidayApp.Core.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\HolidayApp.Core.pdb
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\Nager.Date.dll
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirConges.Core.csproj.CopyComplete

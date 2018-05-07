@@ -78,6 +78,12 @@ namespace SaphirConges.Controllers
 
             return View();
         }
+
+        public PartialViewResult IFrameAction()
+        {
+            return PartialView();
+        }
+
         public ActionResult Index()
         {
             var loggedInUser = User.Identity.Name;
@@ -125,7 +131,7 @@ namespace SaphirConges.Controllers
                 db.SaveChanges();
 
                 //Code envoi de mail si besoin
-                return RedirectToAction("FullYearCalendar");
+                //return View(conges);
 
             }
             return View(conges);

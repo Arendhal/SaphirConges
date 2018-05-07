@@ -71,7 +71,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Créer et visualiser" class="btn btn-default"  />
+                <input type="submit" value="Créer & Visualiser" class="btn btn-default" onclick="document.getElementById('FrameCal').contentWindow.location.reload(true);"  />
             </div>
         </div>
     </div>
@@ -80,7 +80,13 @@
     @*<div class="col-md-offset-0 col-md-12" >
         @Html.Partial("~/Views/CongesGeneral/FullYearCalendar.cshtml")
     </div>*@
-<div >
+
+
+<div  style="margin-left:-10%;">
+    <iframe id="FrameCal" height="800" width="1400" src="~/CongesGeneral/FullYearCalendar"></iframe>
+</div>
+
+<div>
     @Html.ActionLink("Retour", "Index")
 </div>
 

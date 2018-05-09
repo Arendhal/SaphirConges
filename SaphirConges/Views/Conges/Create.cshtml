@@ -20,6 +20,16 @@
             @Html.Label("Date de début", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="text" name="StartDate" id="StartDate" />
+                  <div class="col-md-10" id="halfday">
+                    @Html.CheckBox("ishalf")
+                    @Html.Label("Choix de demi journée")
+                    <span id="amorpm">
+                        @Html.Label("Matin")
+                        @Html.RadioButtonFor(model => model.HalfDay, "Matin", new { @class = "morning" })
+                        @Html.Label("Après midi")
+                        @Html.RadioButtonFor(model => model.HalfDay, "Après-midi")
+                    </span>
+                </div>
                 @Html.ValidationMessageFor(model => model.StartDate)
             </div>
         </div>
@@ -28,9 +38,19 @@
             @Html.Label("Date de fin", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="text" name="EndDate" id="EndDate" />
-                @Html.ValidationMessageFor(model => model.EndDate)
+                   <div class="col-md-10" id="HalfDayEnd">
+                        @Html.CheckBox("ishalfEnd")
+                        @Html.Label("Choix de demi journée")
+                        <span id="amorpmEnd">
+                            @Html.Label("Matin")
+                            @Html.RadioButtonFor(model => model.HalfDayEnd, "Matin", new { @class = "morningEnd" })
+                            @Html.Label("Après midi")
+                            @Html.RadioButtonFor(model => model.HalfDayEnd, "Après-midi")
+                        </span>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.EndDate)
+                </div>
             </div>
-        </div>
 
         <div class="form-group">
             @Html.Label("Nombre de jours", new { @class = "control-label col-md-2" })
@@ -77,11 +97,7 @@
     </div>
 
 }
-    @*<div class="col-md-offset-0 col-md-12" >
-        @Html.Partial("~/Views/CongesGeneral/FullYearCalendar.cshtml")
-    </div>*@
-
-
+  
 <div  style="margin-left:-10%;">
     <iframe id="FrameCal" height="800" width="1400" src="~/CongesGeneral/FullYearCalendar"></iframe>
 </div>

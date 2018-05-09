@@ -34,6 +34,9 @@ namespace SaphirCongesCore.Models
         [Display(Name = "Demi-journée:")]
         public virtual String HalfDay { get; set; }
 
+        [Display(Name = "Demi-journée:")]
+        public virtual String HalfDayEnd { get; set; }
+
         [Display(Name = "Statut")]
         public virtual String Statut { get; set; }
 

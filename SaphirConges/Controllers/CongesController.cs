@@ -123,10 +123,16 @@ namespace SaphirConges.Controllers
                 {
                     conges.CongesDescription = "Congés '" + conges.TypeConges + " 'de " + employe.FirstName + " " + employe.LastName;
                 }
+              
                 conges.Employe = employe;
                 conges.BookingDate = DateTime.Today;
                 conges.BookedBy = User.Identity.GetUserName();
                 conges.NoOfDays = Single.Parse(NoOfDaysDecimal, cult);
+                /*if (conges.HalfDay != "" || conges.HalfDayEnd != "")
+                {
+                    conges.NoOfDays -= 0.5f;
+                }
+                conges.NoOfDays = Single.Parse(NoOfDaysDecimal, cult);*/
                 db.Conges.Add(conges);
                 db.SaveChanges();
 

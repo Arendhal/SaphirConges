@@ -51,6 +51,7 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\HolidayAp
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\HolidayApp.Core.pdb
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\EntityFramework.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\Nager.Date.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\SalesFirst.Core.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\Newtonsoft.Json.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\EntityFramework.xml
@@ -61,9 +62,9 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCon
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCongesCore.Migrations.NoOfDaysFix1.resources
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCongesCore.Migrations.NoOfDaysFix2.resources
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCongesCore.Migrations.NoOfDaysFix3.resources
-C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirConges.Core.csproj.GenerateResource.Cache
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirConges.Core.csproj.GenerateResource.cache
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirConges.Core.csproj.CoreCompileInputs.cache
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirConges.Core.csproj.CopyComplete
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\HolidayApp.Core.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\HolidayApp.Core.pdb
-C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\Nager.Date.dll
-C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirConges.Core.csproj.CopyComplete
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCongesCore.Migrations.HalfdayFix_1.resources

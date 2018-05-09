@@ -58,7 +58,7 @@ namespace SaphirCongesCore.Utils
 
         public static DateTime GetFriday(DateTime Day1, DateTime Day2)
         {
-            var Friday = new DateTime();
+            
             int nb = 0; 
             while (Day1 != Day2)
             {
@@ -118,7 +118,7 @@ namespace SaphirCongesCore.Utils
                     {
                         CongesEnum congesEnum = new CongesEnum();
                         congesEnum.day = 1;
-                        if (item.HalfDay != null && b == false && tmp == days)
+                        if (item.HalfDay != null || item.HalfDayEnd != null && b == false && tmp == days)
                         {
                             congesEnum.day = congesEnum.day / 2;
                             b = true;
@@ -188,8 +188,9 @@ namespace SaphirCongesCore.Utils
                         conges.StartDate = testDate;
                         conges.Statut = item.Statut;
                         conges.HalfDay = item.HalfDay;
-                        
-                        if (conges.HalfDay != null && b == false)
+                        conges.HalfDayEnd = item.HalfDayEnd;
+
+                        if (conges.HalfDay != null || conges.HalfDayEnd != null  && b == false )
                         {
                             conges.NoOfDays = conges.NoOfDays / 2;
                             b = true;

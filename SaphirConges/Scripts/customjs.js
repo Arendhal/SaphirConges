@@ -6,7 +6,23 @@
     $('#NoOfDays').attr('readonly', 'readonly');
     $('#NoOfDays').css('background-color', '#D4D4D4');
 
-    $("#ishalf").click(function () {              //Show Am/Pm option for half days
+    $("#ishalfEnd").click(function () {              //Show Am/Pm option for half_days_End
+        var diff = parseFloat($('#NoOfDays').val());
+        if ($(this).prop('checked') === true) {
+            $("#amorpmEnd").show();
+            diff = diff - 0.5;
+            $(".morningEnd").prop("checked", true);
+
+        }
+        else {
+            diff = diff + 0.5;
+            $("#HalfDay").prop("checked", false);
+            $("#amorpmEnd").hide();
+        }
+        $('#NoOfDays').val(diff);
+    });
+
+    $("#ishalf").click(function () {              //Show Am/Pm option for half_days
         var diff = parseFloat($('#NoOfDays').val());
         if ($(this).prop('checked') === true) {
             $("#amorpm").show();           
@@ -22,7 +38,6 @@
         $('#NoOfDays').val(diff);
     });
     
-
 
     var select = function (dateStr) {                   //calculate the number of days
 

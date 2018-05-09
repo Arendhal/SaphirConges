@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201801220430420_Initial.Designer.cs">
       <DependentUpon>201801220430420_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805090742011_HalfdayFix_1.cs" />
+    <Compile Include="Migrations\201805090742011_HalfdayFix_1.Designer.cs">
+      <DependentUpon>201805090742011_HalfdayFix_1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CompteViewModels.cs" />
     <Compile Include="Models\IdentiteModels.cs" />
@@ -427,6 +431,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201801220430420_Initial.resx">
       <DependentUpon>201801220430420_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805090742011_HalfdayFix_1.resx">
+      <DependentUpon>201805090742011_HalfdayFix_1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\HolidayReport.rdlc" />
     <EmbeddedResource Include="Reports\Report1.rdlc" />

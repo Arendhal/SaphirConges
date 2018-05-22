@@ -1,11 +1,13 @@
 ﻿@model SaphirCongesCore.Models.Conges
 
 @{
-    ViewBag.Title = "Supprimer";
+                /**/
+
+                ViewBag.Title = "Supprimer";
 }
 <h2> Supprimer</h2>
 <h3> Êtes vous certain de vouloir supprimer ceci?</h3>
-<div>
+<div id="delForm">
     <h4> Congés </h4>
     <hr />
     <dl class="dl-horizontal">
@@ -41,12 +43,20 @@
             @Html.DisplayFor(model => model.Statut)
         </dd>
     </dl>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            <div class="form-actions no-color">
-                <input type="submit" value="Supprimer" class="btn btn-default" />|
-                @Html.ActionLink("Retour", "Index")
-            </div>
-        }
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Supprimer" class="btn btn-default" />
+            @Html.ActionLink("Retour", "FrameIndex")
+        </div>
+    }
 </div>
+<script type="text/javascript">
+    document.getElementById("delForm").onsubmit = function () {
+        var address = window.parent.location;
+        if (window.parent && window.parent.postMessage) {
+            window.parent.postMessage("refresh", address); 
+        }
+    }
+</script>

@@ -13,6 +13,8 @@ namespace SaphirConges.Models
     {
         public ApplicationDbContext() : base("DefaultConnection") { }
 
+        public System.Data.Entity.DbSet<SaphirCongesCore.Models.Conges> Conges { get; set; }
+
         //public System.Data.Entity.DbSet<SaphirCongesCore.Models.EmployeHierarchie> EmployeHierarchies { get; set; }
 
         //public System.Data.Entity.DbSet<SaphirCongesCore.Models.EmployeHierarchie> EmployeHierarchies { get; set; }

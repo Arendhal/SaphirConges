@@ -78,6 +78,25 @@ namespace SaphirConges.Controllers
             return View();
         }
 
+        public ActionResult FrameCal()
+        {
+            var loggedInUser = User.Identity.Name;
+            var employe = employeService.GetEmployeeByUsername(loggedInUser);
+            if (employe == null || db.GetCongesNonRefuseByEmploye(employe).FirstOrDefault() == null)
+            {
+                ViewBag.CongesGeneral = db.CongesGeneral.ToList();
+                ViewBag.CongesDescription = db.GetAllCongesDescriptions.ToList();
+                ViewBag.Conges = null;
+                return View();
+            }
+
+            ViewBag.CongesGeneral = Utils.GetPublicHoliday();
+            ViewBag.Conges = db.GetCongesNonRefuseByEmploye(employe).ToList();
+            ViewBag.HideNavBar = true;
+
+            return View();
+        }
+
 
         //
         //GET: /General/Details/5

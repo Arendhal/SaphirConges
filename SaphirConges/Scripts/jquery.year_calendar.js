@@ -227,13 +227,13 @@
 
             $_calendar.append('<div id=\"legend\" style=\"color:whitesmoke;\"></div>');
             $_legend = $('#legend');
-            $_legend.append("<div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px; color:white;'>Jours ouvres</span></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'></div></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar weekend ' style='height:40px; background:#00C1F0;'><div></div></div><span style='margin-left:-15px;  line-height: 35px; color:white;'>Week-end</span></div>");
+            $_legend.append("<div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px; color:black;'>Jours ouvres</span></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar' style='height:40px ;'></div></div><div style='float:left; margin-right:20px;'> <div class='legend-item label label-calendar weekend ' style='height:40px; background:#00C1F0;'><div></div></div><span style='margin-left:-15px;  line-height: 35px; color:black;'>Week-end</span></div>");
 
             $.each(pl.options.date_styles, function (i, style) {
 
                 var test = $_legend.text();
                 if (test.indexOf(style.title) === -1)
-                    $_legend.append("<div style=' float:left; margin-right:20px; '> <div class='legend-item label label-calendar " + style.label + " " + style.title + " 'style='height:40px;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px;'>" + style.title + "</span></div>");
+                    $_legend.append("<div style=' float:left; margin-right:20px; '> <div class='legend-item label label-calendar " + style.label + " " + style.title + " 'style='height:40px;'><div class=''></div></div><span style='margin-left:-15px;  line-height: 35px; color:black;'>" + style.title + "</span></div>");
 
             });
 

@@ -16,7 +16,7 @@
         }
         else {
             diff = diff + 0.5;
-            $("#HalfDay").prop("checked", false);
+            $("#HalfDayEnd").prop("checked", false);
             $("#amorpmEnd").hide();
         }
         $('#NoOfDays').val(diff);

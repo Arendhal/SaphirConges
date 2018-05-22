@@ -57,7 +57,6 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\Newtonsof
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\EntityFramework.xml
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\bin\Debug\SalesFirst.Core.xml
-C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirConges.Core.csprojResolveAssemblyReference.cache
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCongesCore.Migrations.Initial.resources
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCongesCore.Migrations.NoOfDaysFix1.resources
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCongesCore.Migrations.NoOfDaysFix2.resources
@@ -68,3 +67,4 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCon
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\HolidayApp.Core.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\HolidayApp.Core.pdb
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCongesCore.Migrations.HalfdayFix_1.resources
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirConges.Core.csprojAssemblyReference.cache

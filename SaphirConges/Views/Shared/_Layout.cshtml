@@ -11,6 +11,12 @@
    
 </head>
 <body>
+    @if (ViewBag.HideNavBar == null)
+    {
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            ...
+        </div>
+    
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -23,9 +29,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Congés", "Index", "Conges")</li>   
+                    <li>@Html.ActionLink("Congés", "Index", "Conges")</li>
                     <li>@Html.ActionLink("Employés", "Index", "Employe")</li>
-       
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Solde de congés <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
@@ -74,16 +80,21 @@
             </div>
         </div>
     </div>
+    }
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+    @if (ViewBag.HideFooter == null)
+    {
+        <footer style="margin-left:-10%;">
             <p>&copy; @DateTime.Now.Year - SAPHIR </p>
         </footer>
+    }
     </div>
-
+    
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("calendar", required: false)
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

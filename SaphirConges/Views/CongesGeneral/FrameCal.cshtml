@@ -1,0 +1,163 @@
+﻿@using System.Web;
+@using SaphirCongesCore.Utils;
+
+@section calendar {
+    <link href="~/Content/calendar.css" rel="stylesheet" />
+    <style>
+
+       @Html.Raw(Utils.CongesColors())
+        body {background:none transparent;}
+
+    </style>
+    <script src="~/Scripts/jquery.year_calendar.js"></script>
+    <script type="text/javascript">
+        function initCalendar() {
+            //Days colorify
+            var date_styles_fromView = [
+    @{
+
+        if (ViewBag.CongesGeneral != null)
+        {
+            foreach (var item in ViewBag.CongesGeneral)
+            {
+
+                //NN: check whether frequency of holiday is yearly, then sets year to current year //
+                if (item.Frequency == 0)
+                {
+                    item.StartDate = Utils.SetAnneeActuelle(item.StartDate);
+                    item.EndDate = Utils.SetAnneeActuelle(item.EndDate);
+                }
+
+                //NN: subtracts 1 from month, as array used here in javascript is zero based //
+                item.StartDate = item.StartDate.AddMonths(-1);
+                item.EndDate = item.EndDate.AddMonths(-1);
+                item.EndDate = item.EndDate.AddDays(1);
+
+
+                var color = (item.Type == "CongeEmploye") ? "CongeEmploye" : "JoursFeries";
+                String str = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item.EndDate) + "), label: '" + color + " ', title: '" + color + "' },";
+                @Html.Raw(str)
+
+            }
+
+        }
+
+
+        if (ViewBag.Conges != null)
+        {
+            foreach (var item2 in ViewBag.Conges)
+            {
+
+                /*NN: subtracts 1 from month, as array used here in javascript is zero based */
+                item2.StartDate = item2.StartDate.AddMonths(-1);
+                item2.EndDate = item2.EndDate.AddMonths(-1);
+                var color2 = (item2.Statut == "Attente" || item2.Statut == null) ? "Attente" : " " + item2.TypeConges;
+                if(item2.Statut == null)
+                {
+                    item2.Statut = "Attente";
+                }
+                String str = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item2.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item2.EndDate.AddDays(1)) + "), label: '" + color2 + " ', title: '" + color2 + "' },";
+                @Html.Raw(str)
+                if (item2.StartDate == item2.EndDate && item2.HalfDay == null)
+                {
+                    item2.EndDate = item2.EndDate.AddDays(1);
+                    String str2 = "{ start: new Date(" + string.Format("{0:yyyy, MM, dd}", item2.StartDate) + "), end: new Date(" + string.Format("{0:yyyy, MM, dd}", item2.EndDate) + "), label: '" + color2 + " ', title: '" + color2 + "' },";
+                    @Html.Raw(str2)
+                }
+
+
+            }
+        }
+    }
+            ];
+
+           //Events to click
+            var events = [];
+
+                //NN:Orange corners for half day
+                var halfDays = [
+                 @{
+                     /* get half days */
+                     /*if (ViewBag.Conges != null )
+                     {
+                         foreach (var item3 in ViewBag.Conges)
+                         {
+                             //item3.StartDate = item3.StartDate.AddMonths(-1);
+                             //item3.EndDate = item3.EndDate.AddMonths(-1);
+                             //item3.EndDate = item3.EndDate.AddDays(1);
+                             String str = "{ date: new Date(" + string.Format("{0:yyyy, MM, dd}", (Utils.GetFriday(item3.StartDate, item3.EndDate))) + "), title: 'Half Day' },";
+                            @Html.Raw(str)
+
+                         }
+                     }*/
+
+                }
+
+
+            ];
+                var markers = halfDays;
+
+                var event_click = function (evt) {
+                    var _id = evt.data('_id');
+                $.each(events, function (i, e) {
+                        if (e._id == _id)
+                            alert(e.title);
+                    });
+                }
+
+                var range_select = function (day1, day2) {
+                    var d1 = new Date(day1.data('date'));
+                    var d2 = new Date(day2.data('date'));
+                    d1.setHours(12, 0);
+                    d2.setHours(12, 0);
+                    selected_range_start = d1;
+                    selected_range_end = d2;
+                }
+
+                var range_unselect = function () {
+                    selected_range_start = false;
+                    selected_range_end = false;
+                }
+
+                var marker_click = function (evt) {
+
+                }
+
+           $("#calendar-holder").year_calendar({
+               // year: 2013, // Optional, defaults to current year - pass in a year - Integer or String
+               scroll_to_date: true, // Scroll to the current date?,
+               date_styles: date_styles_fromView,
+               events: events,
+               event_click: event_click,
+               ///day_click: day_click,
+               range_select: range_select,
+               range_unselect: range_unselect,
+               markers: markers,
+               marker_click: marker_click
+            })
+        }
+
+        $(document).ready(function () {
+            initCalendar();
+            $(".day").click(function () {
+                var myClasses = this.classList;
+                if (myClasses[3] != 'selected')
+                    $("#selection").text(myClasses[3]);
+
+            });
+        })
+
+    </script>
+
+}
+
+<div id="calendar-holder">
+
+</div>
+
+<br />
+<br />
+
+<div class="alert alert-danger">
+    Attention ! Certains congés ne s'appliquent pas dans votre pays!<br /> Merci d'en tenir compte!.
+</div>

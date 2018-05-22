@@ -2,8 +2,20 @@
 @using SaphirCongesCore.Utils;
 @{
     ViewBag.Title = "Créer";
-}
 
+}
+<style>
+    body {
+        background: none transparent;
+    }
+</style>
+<script>
+    window.onmessage = function (e) {
+        if (e.data === "refresh") {
+            location.reload();
+        }
+    };
+</script>
 <h2>Créer</h2>
 <link href="~/Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
 
@@ -11,19 +23,19 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="form-horizontal">
+    <div class="form-horizontal" style="margin-left:-20%;">
         <h4> Poser des congés</h4>
         <hr />
         @Html.ValidationSummary(true)
 
         <div class="form-group">
             @Html.Label("Date de début", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="text" name="StartDate" id="StartDate" />
-                  <div class="col-md-10" id="halfday">
+            <div class="col-md-10" style="width:20%;">
+                <input text" name="StartDate" id="StartDate" />
+                <div class="col-md-10" id="halfday">
                     @Html.CheckBox("ishalf")
-                    @Html.Label("Choix de demi journée")
-                    <span id="amorpm">
+                    @Html.Label("Inclus une demi journée")
+                    <span id="amorpm" hidden>
                         @Html.Label("Matin")
                         @Html.RadioButtonFor(model => model.HalfDay, "Matin", new { @class = "morning" })
                         @Html.Label("Après midi")
@@ -36,21 +48,21 @@
 
         <div class="form-group">
             @Html.Label("Date de fin", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10" style="width:20%;">
                 <input type="text" name="EndDate" id="EndDate" />
-                   <div class="col-md-10" id="HalfDayEnd">
-                        @Html.CheckBox("ishalfEnd")
-                        @Html.Label("Choix de demi journée")
-                        <span id="amorpmEnd">
-                            @Html.Label("Matin")
-                            @Html.RadioButtonFor(model => model.HalfDayEnd, "Matin", new { @class = "morningEnd" })
-                            @Html.Label("Après midi")
-                            @Html.RadioButtonFor(model => model.HalfDayEnd, "Après-midi")
-                        </span>
-                    </div>
-                    @Html.ValidationMessageFor(model => model.EndDate)
+                <div class="col-md-10" id="HalfDayEnd">
+                    @Html.CheckBox("ishalfEnd")
+                    @Html.Label("Inclus une demi journée")
+                    <span id="amorpmEnd" hidden>
+                        @Html.Label("Matin")
+                        @Html.RadioButtonFor(model => model.HalfDayEnd, "Matin", new { @class = "morningEnd" })
+                        @Html.Label("Après midi")
+                        @Html.RadioButtonFor(model => model.HalfDayEnd, "Après-midi")
+                    </span>
                 </div>
+                @Html.ValidationMessageFor(model => model.EndDate)
             </div>
+        </div>
 
         <div class="form-group">
             @Html.Label("Nombre de jours", new { @class = "control-label col-md-2" })
@@ -91,18 +103,34 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Créer & Visualiser" class="btn btn-default" onclick="document.getElementById('FrameCal').contentWindow.location.reload(true);"  />
+                <input type="submit" value="Créer & Visualiser" class="btn btn-default" onclick="RefreshIframe" />
             </div>
         </div>
     </div>
 
+    <div style="margin-top:-10%;">
+        <iframe id="FrameCal"
+                frameborder="0"
+                allowtransparency="true"
+                height="800"
+                width="1400"
+                style="margin-top:-38%; margin-left:23%; background-color:transparent;"
+                src="~/CongesGeneral/FrameCal"></iframe>
+    </div>
 }
-  
-<div  style="margin-left:-10%;">
-    <iframe id="FrameCal" height="800" width="1400" src="~/CongesGeneral/FullYearCalendar"></iframe>
-</div>
+<br />
 
 <div>
+    <iframe id="FrameIndex"
+            frameborder="0"
+            height="400"
+            width="650"
+            style="float:left;  margin-left:-33%; margin-top:-35%;"
+            src="~/Conges/FrameIndex"></iframe>
+</div>
+<br />
+<br />
+<div style="margin-left:-10%;">
     @Html.ActionLink("Retour", "Index")
 </div>
 
@@ -111,6 +139,14 @@
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/Scripts/jquery-ui-1.10.4.js")
     @Scripts.Render("~/Scripts/customjs.js")
+    @Scripts.Render("~/Scripts/customjs2.js")
 
 }
+<script>
 
+    function RefreshIframe() {
+        document.getElementById('FrameCal').contentWindow.location.reload(true);
+        document.getElementById('FrameIndex').contentWindow.location.reload(true);
+    }
+
+</script>

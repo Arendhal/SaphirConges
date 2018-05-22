@@ -270,7 +270,6 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Microsoft.Owin.Secur
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.csprojResolveAssemblyReference.cache
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.Migrations.Initial.resources
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.csproj.GenerateResource.cache
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.csproj.CoreCompileInputs.cache
@@ -278,3 +277,4 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.c
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\HolidayApp.dll
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\HolidayApp.pdb
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.Migrations.HalfdayFix_1.resources
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges\obj\Debug\SaphirConges.csprojAssemblyReference.cache

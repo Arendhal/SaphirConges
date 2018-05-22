@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SaphirCongesCore.Models.Conges>
+
+@using SaphirCongesCore.Models;
+@{
+    ViewBag.Title = "FrameIndex";
+    ViewBag.HideFooter = true;
+}
+<script src="~/Scripts/jquery.year_calendar.js"></script>
+<style>
+ 
+</style>
+
+<h2>Ma liste de congés</h2>
+
+
+@{if (ViewBag.Message != null)
+
+    { <h1> @ViewBag.Message </h1> }
+else
+{
+
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayName("Date de début")
+            </th>
+            <th>
+                @Html.DisplayName("Date de Fin")
+            </th>
+
+            <th>
+                @Html.DisplayName("Nombre de jours")
+            </th>
+        
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoOfDays)
+                </td>
+
+                <td>
+                    @{
+                        if (item.Statut == null)
+                        {
+                            @Html.ActionLink("Editer", "Edit", new { id = item.CongesID }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Supprimer", "Delete", new { id = item.CongesID }, new { @class = "btn btn-danger" })
+                        }
+
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+}
+}
+
+
+
+

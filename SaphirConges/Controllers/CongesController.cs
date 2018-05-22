@@ -97,6 +97,20 @@ namespace SaphirConges.Controllers
             return View(db.GetCongesByEmploye(employe).ToList());
         }
 
+        public ActionResult FrameIndex()
+        {
+            var loggedInUser = User.Identity.Name;
+            var employe = employeService.GetEmployeeByUsername(loggedInUser);
+            if (employe == null || db.GetCongesByEmploye(employe).FirstOrDefault() == null)
+            {
+                ViewBag.Message = "Pas de congés prévus";
+                return View();
+            }
+            ViewBag.HideNavBar = true;
+
+            return View(db.GetCongesByEmploye(employe).ToList());
+        }
+
         //
         //GET: /Conges/Creer
         public ActionResult Create()
@@ -195,7 +209,7 @@ namespace SaphirConges.Controllers
                 conges.NoOfDays = Single.Parse(NoOfDaysDecimal, cult);
                 db.Entry(conges).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("FullYearCalendar");
+                return RedirectToAction("FrameIndex");
   
             }
             return View(conges);

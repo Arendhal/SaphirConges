@@ -58,13 +58,10 @@ namespace SaphirCongesCore.Utils
 
         public static DateTime GetFriday(DateTime Day1, DateTime Day2)
         {
-            
-            int nb = 0; 
-            while (Day1 != Day2)
+           while (Day1 != Day2)
             {
                 if (Day1.DayOfWeek == DayOfWeek.Friday)
                 {
-                    nb++;
                     return Day1;  
                 }
                Day1= Day1.AddDays(1);

@@ -32,9 +32,9 @@
             @Html.Label("Date de début", new { @class = "control-label col-md-2" })
             <div class="col-md-10" style="width:20%;">
                 <input text" name="StartDate" id="StartDate" />
-                <div class="col-md-10" id="halfday">
+                <div class="col-md-10" id="halfday" style="margin-left:-3%;">
                     @Html.CheckBox("ishalf")
-                    @Html.Label("Inclus une demi journée")
+                    @Html.Label("Est une demi journée")
                     <span id="amorpm" hidden>
                         @Html.Label("Matin")
                         @Html.RadioButtonFor(model => model.HalfDay, "Matin", new { @class = "morning" })
@@ -50,9 +50,9 @@
             @Html.Label("Date de fin", new { @class = "control-label col-md-2" })
             <div class="col-md-10" style="width:20%;">
                 <input type="text" name="EndDate" id="EndDate" />
-                <div class="col-md-10" id="HalfDayEnd">
+                <div class="col-md-10" id="HalfDayEnd" style="margin-left:-3%;">
                     @Html.CheckBox("ishalfEnd")
-                    @Html.Label("Inclus une demi journée")
+                    @Html.Label("Est une demi journée")
                     <span id="amorpmEnd" hidden>
                         @Html.Label("Matin")
                         @Html.RadioButtonFor(model => model.HalfDayEnd, "Matin", new { @class = "morningEnd" })
@@ -78,8 +78,8 @@
                             @Html.Label("Après midi")
                             @Html.RadioButtonFor(model => model.HalfDay, "Après-midi")
                         </span>
-                    </div>*@
-                @Html.ValidationMessageFor(model => model.NoOfDays)
+                    </div>
+                Html.ValidationMessageFor(model => model.NoOfDays)*@
             </div>
         </div>
 

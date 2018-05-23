@@ -68,3 +68,4 @@ C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\HolidayAp
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\HolidayApp.Core.pdb
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCongesCore.Migrations.HalfdayFix_1.resources
 C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirConges.Core.csprojAssemblyReference.cache
+C:\Users\LEGUEN\Documents\Dev\SaphirConges\SaphirConges.Core\obj\Debug\SaphirCongesCore.Migrations.HalfdayFix_11.resources

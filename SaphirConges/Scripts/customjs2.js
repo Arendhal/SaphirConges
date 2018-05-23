@@ -1,9 +1,4 @@
-﻿
-
-
-
-
-$(document).ready(function () {
+﻿$(document).ready(function () {
 
     var d1;
     var d2;

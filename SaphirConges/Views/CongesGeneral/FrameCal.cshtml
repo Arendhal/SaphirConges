@@ -11,7 +11,9 @@
     </style>
     <script src="~/Scripts/jquery.year_calendar.js"></script>
     <script type="text/javascript">
+
         function initCalendar() {
+
             //Days colorify
             var date_styles_fromView = [
     @{
@@ -65,35 +67,41 @@
                     @Html.Raw(str2)
                 }
 
-
+                //Friday = Utils.GetFriday(item2.StartDate, item2.EndDate);
             }
         }
     }
             ];
 
-           //Events to click
             var events = [];
 
-                //NN:Orange corners for half day
+                //NB:Orange corners for half day
                 var halfDays = [
                  @{
-                     /* get half days */
-                     /*if (ViewBag.Conges != null )
+                     var Friday = DateTime.Today;
+                     if (ViewBag.Conges != null)
                      {
-                         foreach (var item3 in ViewBag.Conges)
+                         foreach (var item in ViewBag.Conges)
                          {
-                             //item3.StartDate = item3.StartDate.AddMonths(-1);
-                             //item3.EndDate = item3.EndDate.AddMonths(-1);
-                             //item3.EndDate = item3.EndDate.AddDays(1);
-                             String str = "{ date: new Date(" + string.Format("{0:yyyy, MM, dd}", (Utils.GetFriday(item3.StartDate, item3.EndDate))) + "), title: 'Half Day' },";
-                            @Html.Raw(str)
-
+                             item.StartDate = item.StartDate;//.AddMonths(-1);
+                             item.EndDate = item.EndDate;//.AddMonths(-1);
+                             while(item.StartDate != item.EndDate)
+                             {
+                                 if(item.StartDate.DayOfWeek == DayOfWeek.Tuesday)
+                                 {
+                                     String str = "{ date: new Date(" + string.Format("{0:yyyy, MM, dd}", item.StartDate) + "), title: 'Half Day' },";
+                                     @Html.Raw(str)
+                                     item.StartDate = item.StartDate.AddDays(+1);
+                                 }
+                                 else
+                                 {
+                                     item.StartDate = item.StartDate.AddDays(+1);
+                                 }
+                             }
                          }
-                     }*/
+                     }
 
-                }
-
-
+                   }
             ];
                 var markers = halfDays;
 
